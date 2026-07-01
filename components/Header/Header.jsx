@@ -5,7 +5,7 @@ import { Search, Bell } from 'lucide-react';
 function Header() {
   return (
     <>
-    <header className='bg-white grid grid-cols-6 p-5 justify-between items-center'>
+    <header className='bg-white grid grid-cols-6 p-5 shadow-2xl justify-between items-center'>
       <div>
         <h1 className='text-2xl font-bold font-sans'><span className='text-red-400'>Task</span>Easy</h1>
       </div>
@@ -15,13 +15,14 @@ function Header() {
       <div className='col-start-5 flex'>
         <input type="text" className='opacity-0 pointer-events-none' /><Bell className='bg-red-400 text-2xl p-1 rounded text-white h-full' strokeWidth={3} size={24}/>
       </div>
-      <div className='col-start-6 text-end flex gap-1'>
+      <div className='col-start-6 text-end'>
         <span>
 
         {
           new Date().toLocaleDateString(undefined, {weekday: 'long'})
         }
         </span>
+        <br />
         <span>
           {
             new Date().toLocaleDateString()
