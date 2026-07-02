@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server.js";
+import { NextRequest, NextResponse } from "next/server";
 import { connectDatabase } from "@/lib/dbConnection.js";
 import User from "@/models/User.model.js";
 
@@ -16,10 +16,8 @@ export async function POST (NextRequest){
         }
 
         await connectDatabase()
-        console.info("Working here")
-
+    
         const existingUser = await User.findOne({email})
-
         if(existingUser){
             return NextResponse.json(
                 {error: "User already registered."},

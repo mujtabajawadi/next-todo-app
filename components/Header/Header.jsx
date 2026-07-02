@@ -5,12 +5,12 @@ import { Search, Bell } from 'lucide-react';
 function Header() {
   return (
     <>
-    <header className='bg-white grid grid-cols-6 p-5 shadow-2xl justify-between items-center'>
+    <header className='bg-[#ededed] grid grid-cols-6 px-5 py-1 shadow-lg justify-between items-center'>
       <div>
         <h1 className='text-2xl font-bold font-sans'><span className='text-red-400'>Task</span>Easy</h1>
       </div>
       <div className='flex col-span-3'>
-        <input type="text" placeholder='Search your task here...' className='w-full'/><span className='bg-red-400 p-1 rounded'><Search className='text-white' strokeWidth={3} /></span>
+        <input type="text" placeholder='Search your task here...' className='w-full rounded-lg'/><span className='bg-red-400 p-1 rounded'><Search className='text-white' strokeWidth={3} /></span>
       </div>
       <div className='col-start-5 flex'>
         <input type="text" className='opacity-0 pointer-events-none' /><Bell className='bg-red-400 text-2xl p-1 rounded text-white h-full' strokeWidth={3} size={24}/>
@@ -23,7 +23,7 @@ function Header() {
         }
         </span>
         <br />
-        <span>
+        <span className='text-blue-600'>
           {
             new Date().toLocaleDateString()
           }
