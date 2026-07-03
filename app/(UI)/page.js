@@ -1,8 +1,7 @@
-import Image from "next/image";
+import { redirect } from "next/navigation.js";
+
 
 export default function Home() {
-  return (
-  <></>
-  );
+  redirect("/dashboard")
 }
 

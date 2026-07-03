@@ -1,9 +1,11 @@
+import { Profile } from '@/components/index'
 import React from 'react'
+
 
 function page() {
   return (
-    <div>
-      User Profile
+    <div className='grow bg-cyan-700 rounded-lg'>
+      <Profile/>
     </div>
   )
 }
