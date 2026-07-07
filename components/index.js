@@ -6,7 +6,7 @@ import Content from "./Content/Content.jsx";
 import Container from "./Container/Container.jsx";
 import Profile from "./Profile/Profile.jsx";
 import Tasks from "./MyTasks/Tasks.jsx";
-import TaskDetail from "./TaskDetail/TaskDetail.jsx";
+import TaskForm from "./MyTasks/TaskForm.jsx";
 
 
 
@@ -22,5 +22,5 @@ export {
     Container,
     Profile,
     Tasks,
-    TaskDetail
+    TaskForm
 }

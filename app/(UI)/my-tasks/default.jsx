@@ -1,10 +1,10 @@
 import React from 'react'
 import {Tasks} from "@/components/index"
 
-function page() {
+function DeafultTasks() {
   return (
     <Tasks/>
   )
 }
 
-export default page
+export default DeafultTasks
