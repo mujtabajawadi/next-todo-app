@@ -6,7 +6,8 @@ import { TaskForm } from "@/components/index";
 
 function Tasks({ limit, icon, title }) {
   const [tasks, setTasks] = useState([]);
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [editForm, setEditForm] = useState(false);
   const router = useRouter();
   const tasksDisplay = limit ?? tasks.length;
 
@@ -21,26 +22,29 @@ function Tasks({ limit, icon, title }) {
     fetchTasks();
   }, [router]);
 
-  const date = new Date()
-  const today = date.toLocaleDateString()
+  const date = new Date();
+  const today = date.toLocaleDateString();
 
   return (
     <>
-    <div className="p-3">
-
-      <div className="flex justify-between">
-        <h1 className="flex gap-2">
-          <span>{icon ?? ""}</span>
-          <span>{title ?? "My Tasks"}</span>
-        </h1>
-        {
-            title && icon && 
-            <button onClick={()=> setIsDialogOpen(true)}><span>+</span> Add Task</button>
-        }
-      </div>
-      <TaskForm isDialogOpen={isDialogOpen} setIsDialogOpen={setIsDialogOpen}/>
-      <p>{today} &nbsp;&nbsp;  &bull; Today </p>
+      <div className="p-3">
+        <div className="flex justify-between">
+          <h1 className="flex gap-2">
+            <span>{icon ?? ""}</span>
+            <span>{title ?? "My Tasks"}</span>
+          </h1>
+          {title && icon && (
+            <button onClick={() => setIsDialogOpen(true)}>
+              <span>+</span> Add Task
+            </button>
+          )}
         </div>
+        <TaskForm
+          isDialogOpen={isDialogOpen}
+          setIsDialogOpen={setIsDialogOpen}
+        />
+        <p>{today}&nbsp; &bull; Today </p>
+      </div>
       {tasks.map((task, index) => {
         if (index > tasksDisplay) return null;
         return (

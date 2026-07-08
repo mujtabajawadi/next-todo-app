@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ChevronDownIcon } from "lucide-react";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
@@ -22,39 +22,94 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useRouter } from "next/navigation";
 
-function TaskForm({ isDialogOpen, setIsDialogOpen }) {
+
+function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
+  const [isEditing, setIsEditing] = useState(false)
   const [date, setDate] = useState();
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [priority, setPriority] = useState("low")
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("low");
+  const [status, setStatus] = useState("false");
 
-
-  const handleSubmit = (event)=>{
-    event.preventDefault()
-    const formData = {
-      title,
-      description,
-      date,
-      priority
-    }
-
-    console.log(formData)
-    setIsDialogOpen(false)
-  }
+  const router = useRouter()
   
+
+  useEffect(()=>{
+    setIsEditing(!!task)
+    if(task){
+      setTitle(task.title),
+      setDescription(task.description),
+      setPriority(task.priority),
+      setDate(task.deadline),
+      setStatus(task.status)
+    }else{
+      setTitle(""),
+      setDescription(""),
+      setPriority("low"),
+      setDate(""),
+      setStatus("false")
+    }
+  },[task, isDialogOpen])
+
+
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+
+    const url = isEditing? `/api/tasks?id=${task._id}`: "/api/tasks"
+    const method = isEditing? "PATCH": "POST"
+
+    try {
+      const response = await fetch(url, {
+        method: method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          priority,
+          deadline: date,
+          status,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to add new task.");
+      }
+      setTitle("");
+      setDescription("");
+      setPriority("low");
+      setDate("");
+      setIsDialogOpen(false);
+      router.push("/dashboard")
+    } catch (error) {
+      console.error("Task addition Error: ", error);
+    }
+  };
+
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <form onSubmit={handleSubmit}>
-        {/* <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} /> */}
-        <DialogContent className="sm:max-w-sm">
+      {/* <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} /> */}
+      <DialogContent className="sm:max-w-sm">
+        <form onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle>Add New task</DialogTitle>
+            <DialogTitle>{isEditing?"Edit Task": "Add New Task"}</DialogTitle>
           </DialogHeader>
           <FieldGroup>
             <Field>
               <Label htmlFor="title-1">Title</Label>
-              <Input id="title-1" name="title" value={title} onChange={(e)=> setTitle(e.target.value)} />
+              <Input
+                id="title-1"
+                name="title"
+                value={title}
+                required
+                onChange={(e) => setTitle(e.target.value)}
+              />
             </Field>
             <Field>
               <Label htmlFor="deadline-1">Date</Label>
@@ -71,9 +126,10 @@ function TaskForm({ isDialogOpen, setIsDialogOpen }) {
                     </Button>
                   }
                 />
-                <PopoverContent className="w-auto p-0" align="start">
+                <PopoverContent className="w-auto p-0" align="start" required>
                   <Calendar
                     mode="single"
+                    required
                     selected={date}
                     onSelect={setDate}
                     defaultMonth={date}
@@ -87,6 +143,7 @@ function TaskForm({ isDialogOpen, setIsDialogOpen }) {
                 id="priority"
                 defaultValue="option-one"
                 className="flex justify-between"
+                required
                 value={priority}
                 onValueChange={setPriority}
               >
@@ -110,9 +167,9 @@ function TaskForm({ isDialogOpen, setIsDialogOpen }) {
                 id="description-1"
                 name="description"
                 placeholder="Task description goes here..."
-                rows={10}
-                value={description} 
-                onChange={(e)=> setDescription(e.target.value)}
+                required
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </Field>
           </FieldGroup>
@@ -127,12 +184,10 @@ function TaskForm({ isDialogOpen, setIsDialogOpen }) {
                 </Button>
               }
             />
-            <Button type="submit">
-              Done
-            </Button>
+            <Button type="submit">{isEditing?"Update":"Done"}</Button>
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 }

@@ -1,26 +1,18 @@
-import { connectDatabase } from "@/lib/dbConnection"
-import Task from "@/models/Tasks.model"
-
+import { connectDatabase } from "@/lib/dbConnection";
+import { SquarePen, Trash2 } from "lucide-react";
+import Task from "@/models/Tasks.model";
+import { TaskForm, TaskDetail } from "@/components/index";
 
 async function page(props) {
-    const task = await props.params
-    
-    await connectDatabase()
-    const userTask = await Task.findById({_id: task.id})
+  const task = await props.params;
 
+  await connectDatabase();
+  const userTask = await Task.findById({ _id: task.id });
+  const taskObject = JSON.parse(JSON.stringify(userTask))
 
   return (
-    <>
-    <div className="bg-gray-500 ">
-      <h1>{userTask.title}</h1>
-      <p>{userTask.description}</p>
-      <p>{userTask.priority}</p>
-      <p>{userTask.status}</p>
-      <p>{userTask.deadline.toDateString()}</p>
-     
-    </div>
-    </>
-  )
+    <TaskDetail userTask={taskObject}/>
+  );
 }
 
-export default page
+export default page;
