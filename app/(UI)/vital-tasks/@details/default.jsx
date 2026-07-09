@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DefaultDetail() {
+function Vitals() {
   return (
     <div className='p-3 text-center text-xl font-extralight'>
       Select a task to view detail
@@ -8,4 +8,4 @@ function DefaultDetail() {
   )
 }
 
-export default DefaultDetail
+export default Vitals

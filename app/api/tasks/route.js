@@ -14,9 +14,17 @@ export async function POST(req) {
     }
     const userId = decodedToken.id;
 
-    const { title, description, priority, status, deadline } = await req.json();
+    const { title, description, priority, isCompleted, deadline } =
+      await req.json();
 
-    if (!title || !description || !priority || !status || !deadline) {
+    if (
+      !title ||
+      !description ||
+      !priority ||
+      !isCompleted === undefined ||
+      isCompleted === null ||
+      !deadline
+    ) {
       return NextResponse.json(
         { error: "All fields are required." },
         { status: 400 },
@@ -27,7 +35,7 @@ export async function POST(req) {
       title,
       description,
       priority,
-      status,
+      isCompleted,
       deadline,
       createdBy: userId,
     });
@@ -52,7 +60,7 @@ export async function GET(req) {
     const userId = decodedToken.id;
     await connectDatabase();
 
-    const taskList = await Task.find({ createdBy: userId });
+    const taskList = await Task.find({ createdBy: userId }).sort({createdAt: -1});
     return NextResponse.json({ taskList }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

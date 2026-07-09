@@ -31,7 +31,7 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("low");
-  const [status, setStatus] = useState("false");
+  const [isCompleted, setIsCompleted] = useState(true);
 
   const router = useRouter()
   
@@ -43,13 +43,13 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
       setDescription(task.description),
       setPriority(task.priority),
       setDate(task.deadline),
-      setStatus(task.status)
+      setIsCompleted(task.isCompleted)
     }else{
       setTitle(""),
       setDescription(""),
       setPriority("low"),
       setDate(""),
-      setStatus("false")
+      setIsCompleted(isCompleted)
     }
   },[task, isDialogOpen])
 
@@ -73,8 +73,8 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
           title,
           description,
           priority,
-          deadline: date,
-          status,
+          deadline: format(date, "yyyy-MM-dd"),
+          isCompleted,
         }),
       });
       const data = await response.json();
@@ -86,7 +86,7 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
       setPriority("low");
       setDate("");
       setIsDialogOpen(false);
-      router.push("/dashboard")
+      router.push("/my-tasks")
     } catch (error) {
       console.error("Task addition Error: ", error);
     }

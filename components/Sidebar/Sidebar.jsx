@@ -24,7 +24,7 @@ function Sidebar() {
   ];
 
   return (
-    <div className="max-w-60 flex flex-col grow justify-end">
+    <div className="min-w-70 max-w-70 flex flex-col grow justify-end">
       <div className="bg-red-400 text-white rounded-tr-lg rounded-br-lg flex flex-col items-center grow mt-8">
         <div className="flex flex-col items-center">
           <Link href="/profile">

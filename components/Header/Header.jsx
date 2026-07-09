@@ -10,7 +10,10 @@ function Header() {
         <h1 className='text-2xl font-bold font-sans'><span className='text-red-400'>Task</span>Easy</h1>
       </div>
       <div className='flex col-span-3'>
-        <input type="text" placeholder='Search your task here...' className='w-full rounded-lg'/><span className='bg-red-400 p-1 rounded'><Search className='text-white' strokeWidth={3} /></span>
+        <input type="text" placeholder='Search your task here...' className='w-full rounded-lg'/>
+        <span className='bg-red-400 p-1 rounded'>
+          <Search className='text-white' strokeWidth={3} />
+        </span>
       </div>
       <div className='col-start-5 flex'>
         <input type="text" className='opacity-0 pointer-events-none' /><Bell className='bg-red-400 text-2xl p-1 rounded text-white h-full' strokeWidth={3} size={24}/>

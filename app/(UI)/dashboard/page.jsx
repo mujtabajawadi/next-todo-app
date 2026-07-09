@@ -2,21 +2,28 @@
 import { Tasks } from "@/components/index";
 import React from "react";
 import { CalendarClock } from "lucide-react";
+import { useTasks } from "@/hooks/useTasks";
 
 function page() {
+  const {tasks} = useTasks()
+
+  const completedTasks = tasks.filter((task)=> task.isCompleted === true)
+  const isCompletedTasks = completedTasks.length
+  const completionPercentage = completedTasks.length !== 0 ? ((isCompletedTasks * 100) / tasks.length).toFixed(0) : 0
+
+
+  const date = new Date()
+  const today = date.toISOString().split('T')[0]
+  console.log(today)
   return (
-    <div className="">
-      <h1>Welcome back, User</h1>
-      <div className="bg-green-900 py-3 grow px-5 grid grid-cols-2 gap-3 rounded-md">
-        <div className="bg-gray-600 rounded-lg grid grow grid-rows-auto overflow-y-scroll scrollbar-none max-h-[calc(100dvh-56px)]">
-          <Tasks limit={2} icon={<CalendarClock />} title="To-Do" />
-          {/* <div className="bg-amber-800 rounded-lg">
-                </div> */}
-          {/* <div className="bg-amber-800 rounded-lg"></div>
-                <div className="bg-amber-800 rounded-lg"></div> */}
+    <div className=" bg-amber-300 rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
+      <h1 className="px-5 text-xl font-semibold">Welcome back, User</h1>
+      <div className="py-3 grow px-5  min-h-full  grid grid-cols-2 gap-3 rounded-md">
+        <div className="bg-gray-600 rounded-lg grid grid-rows-3">
+          <Tasks limit={2} icon={<CalendarClock />} title="To-Do" filter={(item)=>item.deadline.startsWith(today)} />
         </div>
-        <div className="grow bg-gray-600 rounded-lg grid grid-rows-2 gap-2">
-          <div className="bg-amber-600 rounded-lg flex gap-2 justify-center items-center">
+        <div className="bg-gray-600 rounded-lg grid grid-rows-5 gap-2 ">
+          <div className="bg-amber-600 rounded-lg flex gap-2 row-span-2 justify-center items-center">
             {/* Circular Progress */}
             <div className="relative size-30">
               <svg
@@ -42,15 +49,15 @@ function page() {
                   className="stroke-current text-red-800"
                   strokeWidth="2"
                   strokeDasharray="100"
-                  strokeDashoffset="35"
+                  strokeDashoffset= {completionPercentage}
                   strokeLinecap="round"
                 ></circle>
               </svg>
               <p className="text-center">Not Completed</p>
               {/* Percentage Text */}
               <div className="absolute top-1/2 inset-s-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                <span className="text-center text-2xl font-bold text-red-900">
-                  65%
+                <span className="text-center text-xl font-bold text-red-900">
+                  {completionPercentage !== 0 ? 100 - completionPercentage : 0} %
                 </span>
               </div>
             </div>
@@ -81,7 +88,7 @@ function page() {
                   className="stroke-current text-green-900"
                   strokeWidth="2"
                   strokeDasharray="100"
-                  strokeDashoffset="65"
+                  strokeDashoffset={100 - completionPercentage || 0}
                   strokeLinecap="round"
                 ></circle>
               </svg>
@@ -89,17 +96,22 @@ function page() {
 
               {/* Percentage Text */}
               <div className="absolute top-1/2 inset-s-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                <span className="text-center text-2xl font-bold text-green-900">
-                  35%
+                <span className="text-center text-xl font-bold text-green-900">
+                  {completionPercentage || 0} %
                 </span>
               </div>
               
             </div>
             {/* End Circular Progress */}
           </div>
-          <div className="bg-amber-600 rounded-lg grid grid-rows-2 gap-2 p-10">
-            <div className="bg-blue-950 rounded-lg"></div>
-            <div className="bg-blue-950 rounded-lg"></div>
+          <div className="bg-amber-600 rounded-lg grid grid-rows-2 row-span-3 gap-2 p-10">
+            {
+              completedTasks.slice(0,2).map((task)=>(
+                <div className="bg-blue-950 rounded-lg" key={task._id}>
+                  <h1>{task.title}</h1>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>

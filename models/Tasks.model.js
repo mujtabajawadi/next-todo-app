@@ -13,8 +13,8 @@ const taskSchema = new Schema({
         type: String,
         required: true
     },
-    status: {
-        type: String,
+    isCompleted: {
+        type: Boolean,
         required: true
     },
     deadline: {

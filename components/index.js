@@ -8,6 +8,7 @@ import Profile from "./Profile/Profile.jsx";
 import Tasks from "./MyTasks/Tasks.jsx";
 import TaskForm from "./MyTasks/TaskForm.jsx";
 import TaskDetail from "./TaskDetail/TaskDetail.jsx";
+import About from "./About/About.jsx";
 
 
 
@@ -24,5 +25,6 @@ export {
     Profile,
     Tasks,
     TaskForm,
-    TaskDetail
+    TaskDetail,
+    About,
 }

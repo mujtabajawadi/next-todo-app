@@ -29,17 +29,17 @@ function TaskDetail({ userTask }) {
   };
 
   return (
-    <div>
+    <div className="p-3 max-h-full grow">
       <TaskForm
         isDialogOpen={isDialogOpen}
         setIsDialogOpen={setIsDialogOpen}
         task={userTask}
       />
-      <div className="bg-gray-500 ">
+      <div className="bg-gray-500 p-3 max-h-full grow rounded-lg">
         <h1>{userTask.title}</h1>
         <p>{userTask.description}</p>
         <p>{userTask.priority}</p>
-        <p>{userTask.status}</p>
+        <p>{userTask.isCompleted === false ? "Not Completed" : "Completed"}</p>
         <p>{userTask.deadline}</p>
         <div className="flex gap-5">
           <div>
