@@ -16,14 +16,16 @@ function page() {
   const today = date.toISOString().split('T')[0]
   console.log(today)
   return (
-    <div className=" bg-amber-300 rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
-      <h1 className="px-5 text-xl font-semibold">Welcome back, User</h1>
+    <>
+    <h1 className="px-5 text-xl font-semibold">Welcome back, User</h1>
+    <div className="bg-[#ededed] shadow-lg rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
+      
       <div className="py-3 grow px-5  min-h-full  grid grid-cols-2 gap-3 rounded-md">
-        <div className="bg-gray-600 rounded-lg grid grid-rows-3">
+        <div className="shadow-lg rounded-lg grid grid-rows-3">
           <Tasks limit={2} icon={<CalendarClock />} title="To-Do" filter={(item)=>item.deadline.startsWith(today)} />
         </div>
-        <div className="bg-gray-600 rounded-lg grid grid-rows-5 gap-2 ">
-          <div className="bg-amber-600 rounded-lg flex gap-2 row-span-2 justify-center items-center">
+        <div className="shadow-lg rounded-lg grid grid-rows-5 gap-2 p-3 ">
+          <div className="shadow-md rounded-lg flex gap-2 row-span-2 justify-center items-center">
             {/* Circular Progress */}
             <div className="relative size-30">
               <svg
@@ -46,7 +48,7 @@ function page() {
                   cy="18"
                   r="16"
                   fill="none"
-                  className="stroke-current text-red-800"
+                  className="stroke-current text-red-700"
                   strokeWidth="2"
                   strokeDasharray="100"
                   strokeDashoffset= {completionPercentage}
@@ -56,7 +58,7 @@ function page() {
               <p className="text-center">Not Completed</p>
               {/* Percentage Text */}
               <div className="absolute top-1/2 inset-s-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                <span className="text-center text-xl font-bold text-red-900">
+                <span className="text-center text-xl font-bold">
                   {completionPercentage !== 0 ? 100 - completionPercentage : 0} %
                 </span>
               </div>
@@ -85,7 +87,7 @@ function page() {
                   cy="18"
                   r="16"
                   fill="none"
-                  className="stroke-current text-green-900"
+                  className="stroke-current text-green-700"
                   strokeWidth="2"
                   strokeDasharray="100"
                   strokeDashoffset={100 - completionPercentage || 0}
@@ -96,7 +98,7 @@ function page() {
 
               {/* Percentage Text */}
               <div className="absolute top-1/2 inset-s-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                <span className="text-center text-xl font-bold text-green-900">
+                <span className="text-center text-xl font-bold">
                   {completionPercentage || 0} %
                 </span>
               </div>
@@ -104,10 +106,10 @@ function page() {
             </div>
             {/* End Circular Progress */}
           </div>
-          <div className="bg-amber-600 rounded-lg grid grid-rows-2 row-span-3 gap-2 p-10">
+          <div className="shadow-lg rounded-lg grid grid-rows-2 row-span-3 gap-2 p-10 ">
             {
               completedTasks.slice(0,2).map((task)=>(
-                <div className="bg-blue-950 rounded-lg" key={task._id}>
+                <div className="shadow-md rounded-lg hover:scale-102 transition-transform duration-500" key={task._id}>
                   <h1>{task.title}</h1>
                 </div>
               ))
@@ -116,6 +118,8 @@ function page() {
         </div>
       </div>
     </div>
+    </>
+
   );
 }
 

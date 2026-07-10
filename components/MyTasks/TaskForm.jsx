@@ -93,7 +93,7 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
   };
 
   return (
-    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} className="bg-[#ededed]">
       {/* <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} /> */}
       <DialogContent className="sm:max-w-sm">
         <form onSubmit={handleSubmit}>

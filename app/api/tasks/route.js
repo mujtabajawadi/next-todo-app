@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectDatabase } from "@/lib/dbConnection.js";
 import Task from "@/models/Tasks.model.js";
 import { getToken } from "next-auth/jwt";

@@ -41,7 +41,7 @@ function Sidebar() {
             return (
               <ul
                 key={previous.id}
-                className={`${isActive ? "bg-white text-red-400 rounded-lg" : "hover:bg-[rgba(255,255,255,0.2)] rounded-lg"}`}
+                className={`${isActive ? "bg-[#ededed] text-red-400 rounded-lg" : "hover:bg-[rgba(255,255,255,0.2)] rounded-lg"}`}
               >
                 <Link href={previous.path}>
                   <li className="flex gap-2 items-center text-sm font-light p-2">

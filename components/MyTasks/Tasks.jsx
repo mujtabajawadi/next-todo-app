@@ -16,14 +16,14 @@ function Tasks({ limit, icon, title, filter }) {
 
   return (
     <>
-      <div className="p-3">
-        <div className="flex justify-between">
+      <div className="p-3 max-h-fit">
+        <div className="flex justify-between ">
           <h1 className="flex gap-2">
-            <span>{icon ?? ""}</span>
+            <span className="text-red-400">{icon ?? ""}</span>
             <span>{title ?? "My Tasks"}</span>
           </h1>
           {title && icon && (
-            <button onClick={() => setIsDialogOpen(true)}>
+            <button onClick={() => setIsDialogOpen(true)} className="p-1 rounded-lg bg-red-400 hover:scale-103 text-[#ededed] transition-transform duration-600">
               <span>+</span> Add Task
             </button>
           )}
@@ -39,7 +39,7 @@ function Tasks({ limit, icon, title, filter }) {
 
         return (
           <Link href={`/my-tasks/${task._id}`} key={task._id}>
-            <div className="p-3 mx-3 my-1 bg-gray-500 rounded-lg cursor-pointer text-sm">
+            <div className="p-3 mx-3 my-1 mb-2  shadow-md rounded-lg cursor-pointer text-sm hover:scale-103 transition-transform duration-500 border border-l-red-400">
               <h2>Title: {task.title}</h2>
               <p>Description: {task.description}</p>
               <p>Priority: {task.priority}</p>
