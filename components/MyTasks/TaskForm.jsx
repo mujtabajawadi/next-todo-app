@@ -31,7 +31,7 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("low");
-  const [isCompleted, setIsCompleted] = useState(true);
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const router = useRouter()
   

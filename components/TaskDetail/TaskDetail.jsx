@@ -36,17 +36,18 @@ function TaskDetail({ userTask }) {
         task={userTask}
       />
       <div className="p-3 max-h-full grow rounded-lg">
-        <h1>{userTask.title}</h1>
-        <p>{userTask.description}</p>
-        <p>{userTask.priority}</p>
-        <p>{userTask.isCompleted === false ? "Not Completed" : "Completed"}</p>
-        <p>{userTask.deadline}</p>
-        <div className="flex gap-5 text-red-400 justify-end">
-          <div>
-            <SquarePen onClick={handleEditTask}/>
+        <h1 className="font-semibold">Task Title: <span className="font-extralight">{userTask.title}</span></h1>
+        <p className="font-semibold">Priority: <span className="font-extralight">{userTask.priority}</span></p>
+        <p className="font-semibold">Status: <span className="font-extralight">{userTask.isCompleted === false ? "Not Completed" : "Completed"}</span></p>
+        <p className="font-semibold">Created on : <span className="font-extralight">{new Date(userTask.createdAt).toLocaleDateString()}</span></p>
+        <p className="font-semibold">Task Description: <span className="font-extralight">{userTask.description}</span></p>
+        <p className="font-semibold">Deadline: <span className="font-extralight">{new Date(userTask.deadline).toLocaleDateString()}</span></p>
+        <div className="flex gap-3 justify-end">
+          <div className="bg-red-400 text-white rounded p-1 hover:scale-105 transition-transform duration-700">
+            <SquarePen onClick={handleEditTask} size={14}/>
           </div>
-          <div>
-            <Trash2 onClick={() => handleDeleteTask(userTask._id)} />
+          <div className="bg-red-400 text-white rounded p-1 hover:scale-105 transition-transform duration-400">
+            <Trash2 onClick={() => handleDeleteTask(userTask._id)} size={14}/>
           </div>
         </div>
       </div>

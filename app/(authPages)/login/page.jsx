@@ -1,4 +1,4 @@
-import { Login } from '@/components'
+import { Login } from '@/components/index'
 import React from 'react'
 
 function page() {

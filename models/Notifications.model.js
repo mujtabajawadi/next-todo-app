@@ -22,6 +22,8 @@ const notificationSchema = new Schema(
   },
 );
 
+notificationSchema.index({ userId: 1, isRead: 1 });
+
 const Notification =
   mongoose.models?.Notification ||
   mongoose.model("Notification", notificationSchema);
