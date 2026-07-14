@@ -51,11 +51,11 @@
 @media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #EEF2FF;
   }
 }
 input{
-  border: 1px solid gray;
+  border: 1px solid #EEF2FF;
   border-radius: 5px;
   color: #171717;
   padding: 0.3rem;
@@ -63,6 +63,9 @@ input{
 }
 button{
   cursor: pointer;
+}
+body{
+  background-color: #EEF2FF;
 }
 
 :root {

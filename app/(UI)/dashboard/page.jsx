@@ -23,9 +23,9 @@ function page({ searchParams }) {
   return (
     <>
       <h1 className="px-5 text-xl font-semibold">Welcome back, User</h1>
-      <div className="bg-[#ededed] shadow-lg rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
-        <div className="py-3 grow px-5  min-h-full  grid grid-cols-2 gap-3 rounded-md">
-          <div className="shadow-lg rounded-lg grid grid-rows-4">
+      <div className="rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
+        <div className="py-3 grow  min-h-full  grid grid-cols-2 gap-3 rounded-md">
+          <div className=" bg-[#FFFFFF] border shadow-lg rounded-lg grid grid-rows-4">
             <Tasks
               limit={2}
               icon={<CalendarClock />}
@@ -33,8 +33,8 @@ function page({ searchParams }) {
               filter={(item) => item.deadline.startsWith(today)}
             />
           </div>
-          <div className="shadow-lg rounded-lg grid grid-rows-5 gap-2 p-3 ">
-            <div className="shadow-md rounded-lg flex gap-2 row-span-2 justify-center ">
+          <div className="rounded-lg grid grid-rows-5 gap-2 px-3">
+            <div className="shadow-md bg-[#FFFFFF] rounded-lg flex gap-2 py-2 border row-span-2 justify-center  ">
               {/* Circular Progress */}
               <div className="relative size-30">
                 <svg
@@ -48,7 +48,7 @@ function page({ searchParams }) {
                     cy="18"
                     r="16"
                     fill="none"
-                    className="stroke-current text-gray-800/10"
+                    className="stroke-current text-[#E5E7EB]"
                     strokeWidth="2"
                   ></circle>
                   {/* Progress Circle */}
@@ -57,10 +57,10 @@ function page({ searchParams }) {
                     cy="18"
                     r="16"
                     fill="none"
-                    className="stroke-current text-red-700"
+                    className="stroke-current text-[#EF4444]"
                     strokeWidth="2"
                     strokeDasharray="100"
-                    strokeDashoffset={`${completionPercentage}`}
+                    strokeDashoffset={`${completionPercentage > 0 ? 100 - completionPercentage : completionPercentage}`}
                     strokeLinecap="round"
                   ></circle>
                 </svg>
@@ -68,7 +68,7 @@ function page({ searchParams }) {
                 {/* Percentage Text */}
                 <div className="absolute top-1/2 inset-s-1/2 transform -translate-y-1/2 -translate-x-1/2">
                   <span className="text-center text-xl font-bold">
-                    {100 - completionPercentage} %
+                    {completionPercentage > 0 ? 100 - completionPercentage : 100} %
                   </span>
                 </div>
               </div>
@@ -87,7 +87,7 @@ function page({ searchParams }) {
                     cy="18"
                     r="16"
                     fill="none"
-                    className="stroke-current text-gray-800/10"
+                    className="stroke-current text-[#E5E7EB]"
                     strokeWidth="2"
                   ></circle>
                   {/* Progress Circle */}
@@ -96,7 +96,7 @@ function page({ searchParams }) {
                     cy="18"
                     r="16"
                     fill="none"
-                    className="stroke-current text-green-700"
+                    className="stroke-current text-[#16A34A]"
                     strokeWidth="2"
                     strokeDasharray="100"
                     strokeDashoffset={100 - completionPercentage || 0}
@@ -114,10 +114,10 @@ function page({ searchParams }) {
               </div>
               {/* End Circular Progress */}
             </div>
-            <div className="shadow-lg rounded-lg grid grid-rows-2 row-span-3 gap-2 p-10 ">
+            <div className="shadow-lg bg-[#FFFFFF] border rounded-lg grid grid-rows-2 row-span-3 gap-2 px-10 py-4 ">
               {
                 completedTasks.length === 0 ? (
-                  <div className="p-5 text-center text-gray-500">No tasks found</div>
+                  <div className="p-5 text-center text-[#111827]">No tasks found</div>
                 ): (
                   completedTasks.slice(0, 2).map((task) => (
                     <div

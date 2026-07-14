@@ -24,16 +24,16 @@ function Sidebar() {
   ];
 
   return (
-    <div className="min-w-70 max-w-70 flex flex-col grow justify-end">
-      <div className="bg-red-400 text-white rounded-tr-lg rounded-br-lg flex flex-col items-center grow mt-8">
+    <div className="min-w-60 max-w-60 flex flex-col grow justify-end">
+      <div className="bg-[#16213E] text-white rounded-tr-lg rounded-br-lg flex flex-col items-center grow mt-8">
         <div className="flex flex-col items-center">
           <Link href="/profile">
             <div className="bg-gray-500 w-15 h-15 rounded-full -mt-5">
               <Image src={image} alt="Profile Image" />
             </div>
           </Link>
-          <h2>John Doe</h2>
-          <p>johndoe@gmail.com</p>
+          <h2 className="text-[#D1D5DB]">John Doe</h2>
+          <p className="text-[#D1D5DB]">johndoe@gmail.com</p>
         </div>
         <nav className="w-[85%] h-full flex flex-col gap-6 px-2 py-4">
           {navItems.map((previous) => {
@@ -41,7 +41,7 @@ function Sidebar() {
             return (
               <ul
                 key={previous.id}
-                className={`${isActive ? "bg-[#ededed] text-red-400 rounded-lg" : "hover:bg-[rgba(255,255,255,0.2)] rounded-lg"}`}
+                className={`${isActive ? "bg-[#4F46E5] text-[#FFFFFF] rounded-lg" : "hover:bg-[#4338CA] rounded-lg text-[#D1D5DB]"}`}
               >
                 <Link href={previous.path}>
                   <li className="flex gap-2 items-center text-sm font-light p-2">
@@ -56,7 +56,7 @@ function Sidebar() {
           })}
 
           <div
-            className=" text-left mt-12 text-sm font-light rounded-lg hover:bg-[rgba(255,255,255,0.2)] p-1"
+            className=" text-left mt-12 text-sm font-light rounded-lg hover:bg-[#DC2626] hover:text-[#FEE2E2] bg-[#FEE2E2] text-[#DC2626] p-1 cursor-pointer"
             onClick={() => signOut({ callbackUrl: "/login" })}
           >
             <button className="flex gap-2 p-1 items-center">

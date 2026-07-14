@@ -29,13 +29,13 @@ function TaskDetail({ userTask }) {
   };
 
   return (
-    <div className="p-3 max-h-full grow">
+    <div className="p-3 max-h-full grow flex flex-col justify-between">
       <TaskForm
         isDialogOpen={isDialogOpen}
         setIsDialogOpen={setIsDialogOpen}
         task={userTask}
       />
-      <div className="p-3 max-h-full grow rounded-lg">
+      <div className="p-3 max-h-full flex flex-col justify-between">
         <h1 className="font-semibold">Task Title: <span className="font-extralight">{userTask.title}</span></h1>
         <p className="font-semibold">Priority: <span className="font-extralight">{userTask.priority}</span></p>
         <p className="font-semibold">Status: <span className="font-extralight">{userTask.isCompleted === false ? "Not Completed" : "Completed"}</span></p>
@@ -43,10 +43,10 @@ function TaskDetail({ userTask }) {
         <p className="font-semibold">Task Description: <span className="font-extralight">{userTask.description}</span></p>
         <p className="font-semibold">Deadline: <span className="font-extralight">{new Date(userTask.deadline).toLocaleDateString()}</span></p>
         <div className="flex gap-3 justify-end">
-          <div className="bg-red-400 text-white rounded p-1 hover:scale-105 transition-transform duration-700">
+          <div className="bg-[#FEF3C7] text-[#D97706] rounded p-1 hover:scale-105 transition-transform duration-700 cursor-pointer">
             <SquarePen onClick={handleEditTask} size={14}/>
           </div>
-          <div className="bg-red-400 text-white rounded p-1 hover:scale-105 transition-transform duration-400">
+          <div className="bg-[#FEE2E2] text-[#DC2626] rounded p-1 hover:scale-105 transition-transform duration-400 cursor-pointer">
             <Trash2 onClick={() => handleDeleteTask(userTask._id)} size={14}/>
           </div>
         </div>

@@ -69,8 +69,7 @@ export async function POST(req) {
 
 export async function GET(req) {
   try {
-    await connectDatabase();
-
+    
     const decodedToken = await getToken({ req });
     if (!decodedToken) {
       return NextResponse.json(
@@ -78,15 +77,16 @@ export async function GET(req) {
         { status: 403 },
       );
     }
-
+    
     const userId = decodedToken.id;
-
+    await connectDatabase();
+    
     const activeNotifications = await Notification.find({
       userId,
       isRead: false,
     }).populate({
       path: "taskId",
-      select: "title dueDate priority",
+      select: "title deadline priority",
     });
 
     return NextResponse.json({ success: true, data: activeNotifications });
@@ -97,8 +97,7 @@ export async function GET(req) {
 
 export async function PATCH(req) {
   try {
-    await connectDatabase();
-
+    
     const decodedToken = await getToken({ req });
     if (!decodedToken) {
       return NextResponse.json(
@@ -106,17 +105,19 @@ export async function PATCH(req) {
         { status: 403 },
       );
     }
-
+    
     const userId = decodedToken.id;
     const { notificationId } = await req.json();
-
+    
     if (!notificationId) {
       return NextResponse.json(
         { error: "Notification ID is required" },
         { status: 400 },
       );
     }
-
+    
+    await connectDatabase();
+    
     const updatedNotification = await Notification.findOneAndUpdate(
       { _id: notificationId, userId },
       { isRead: true },
