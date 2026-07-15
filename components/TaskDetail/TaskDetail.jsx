@@ -10,7 +10,7 @@ function TaskDetail({ userTask }) {
 
   if (!userTask) return null;
 
-  const handleEditTask = async (event, task) => {
+  const handleEditTask = async () => {
     setIsDialogOpen(true);
   };
 
@@ -20,7 +20,6 @@ function TaskDetail({ userTask }) {
         method: "DELETE",
       });
       if (response.ok) {
-        console.log("Task Deleted");
         router.push("/dashboard");
       }
     } catch (error) {

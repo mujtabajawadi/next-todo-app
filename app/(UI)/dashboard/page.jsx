@@ -3,26 +3,28 @@ import { Tasks } from "@/components/index";
 import React, { use } from "react";
 import { CalendarClock } from "lucide-react";
 import { useTasks } from "@/hooks/useTasks";
+import { useSession } from "next-auth/react";
+
 
 function page({ searchParams }) {
   const { tasks } = useTasks();
   const resolvedParams = use(searchParams);
   const currentSearch = resolvedParams.search || "";
-  console.log("User Seacrhes for:", currentSearch);
+  const { data: session ,  } = useSession();
 
   const completedTasks = tasks.filter((task) => task.isCompleted === true);
-  const isCompletedTasks = completedTasks.length;
-  const completionPercentage =
-    completedTasks.length !== 0
-      ? ((isCompletedTasks * 100) / tasks.length).toFixed(0)
-      : 0;
+  const completedTasksCount = completedTasks.length
+  const completionPercentage = tasks.length > 0 ? Math.round((completedTasksCount * 100) / tasks.length) : 0;
+
+  const notCompletedPercentage =
+  tasks.length > 0 ? 100 - completionPercentage : 0;
 
   const date = new Date();
   const today = date.toISOString().split("T")[0];
   console.log(today);
   return (
     <>
-      <h1 className="px-5 text-xl font-semibold">Welcome back, User</h1>
+      <h1 className="px-5 text-xl font-semibold">Welcome, {session?.user?.name.toLocaleUpperCase()}👋🏼</h1>
       <div className="rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
         <div className="py-3 grow  min-h-full  grid grid-cols-2 gap-3 rounded-md">
           <div className=" bg-[#FFFFFF] border shadow-lg rounded-lg grid grid-rows-4">
@@ -60,7 +62,7 @@ function page({ searchParams }) {
                     className="stroke-current text-[#EF4444]"
                     strokeWidth="2"
                     strokeDasharray="100"
-                    strokeDashoffset={`${completionPercentage > 0 ? 100 - completionPercentage : completionPercentage}`}
+                    strokeDashoffset={`${100 - notCompletedPercentage}`}
                     strokeLinecap="round"
                   ></circle>
                 </svg>
@@ -68,7 +70,7 @@ function page({ searchParams }) {
                 {/* Percentage Text */}
                 <div className="absolute top-1/2 inset-s-1/2 transform -translate-y-1/2 -translate-x-1/2">
                   <span className="text-center text-xl font-bold">
-                    {completionPercentage > 0 ? 100 - completionPercentage : 100} %
+                    {notCompletedPercentage} %
                   </span>
                 </div>
               </div>

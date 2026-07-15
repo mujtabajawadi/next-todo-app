@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import image from "@/public/images/todoImage.png";
 import { signOut } from "next-auth/react";
 import {
@@ -12,28 +12,52 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 function Sidebar() {
   const pathname = usePathname();
+  const [profileColor, setProfileColor] = useState("");
+
+  const { data: session } = useSession();
 
   const navItems = [
     { id: 1, name: "Dashboard", icon: <LayoutDashboard />, path: "/dashboard" },
-    { id: 2, name: "Vital Task", icon: <Megaphone />, path: "/vital-tasks" },
+    { id: 2, name: "Vital Tasks", icon: <Megaphone />, path: "/vital-tasks" },
     { id: 3, name: "My Tasks", icon: <CalendarCheck />, path: "/my-tasks" },
     { id: 4, name: "About", icon: <Info />, path: "/about" },
   ];
 
+  console.log(session);
+
+  let colorCode = "#";
+  useEffect(() => {
+    const hexString = "0123456789ABCDEF";
+    for (let i = 0; i < 6; i++) {
+      let randomNumber = Math.floor(Math.random() * 16);
+      colorCode += hexString[randomNumber];
+    }
+    setProfileColor(colorCode);
+  }, []);
+
   return (
     <div className="min-w-60 max-w-60 flex flex-col grow justify-end">
       <div className="bg-[#16213E] text-white rounded-tr-lg rounded-br-lg flex flex-col items-center grow mt-8">
-        <div className="flex flex-col items-center">
+        <div className={`  flex flex-col items-center`}>
           <Link href="/profile">
-            <div className="bg-gray-500 w-15 h-15 rounded-full -mt-5">
-              <Image src={image} alt="Profile Image" />
+            <div
+              className={`w-15 h-15 rounded-full -mt-5 flex justify-center items-center font-bold`}
+              style={{ backgroundColor: profileColor }}
+            >
+              {session?.user?.name
+                .split(" ")
+                .map((name) => name[0])
+                .join("")
+                .slice(0, 2)
+                .toUpperCase()}
             </div>
           </Link>
-          <h2 className="text-[#D1D5DB]">John Doe</h2>
-          <p className="text-[#D1D5DB]">johndoe@gmail.com</p>
+          <h2 className="text-[#D1D5DB]">{session?.user?.name}</h2>
+          <p className="text-[#D1D5DB]">{session?.user?.email}</p>
         </div>
         <nav className="w-[85%] h-full flex flex-col gap-6 px-2 py-4">
           {navItems.map((previous) => {

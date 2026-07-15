@@ -4,7 +4,7 @@ import React from 'react'
 
 function page() {
   return (
-    <div className='bg-[#FFFFFF] shadow-lg rounded-lg grow max-h-full overflow-y-scroll scrollbar-none p-3'>
+    <div className='rounded-lg grow max-h-full overflow-y-scroll scrollbar-none p-3'>
       <About/>
     </div>
   )

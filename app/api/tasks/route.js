@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { connectDatabase } from "@/lib/dbConnection.js";
 import Task from "@/models/Tasks.model.js";
 import { getToken } from "next-auth/jwt";
+import Notification from "@/models/Notifications.model.js";
 
 export async function POST(req) {
   try {
@@ -107,7 +108,10 @@ export async function DELETE(req) {
       );
     }
 
-    console.log(deletedTask);
+    const result = await Notification.findOneAndDelete({ taskId: id });
+    console.log("Notification deleted", result)
+
+    
     return NextResponse.json({ message: "Task deleted" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 });

@@ -28,7 +28,7 @@ function Login() {
 
   return (
     <>
-          <div className='w-screen h-screen bg-red-400 py-15 px-30'>
+          <div className='w-screen h-screen bg-[#4F46E5] py-15 px-30'>
             <div className='w-full h-full bg-white rounded-lg'>
               <div className='flex flex-row-reverse justify-center gap-20 items-center'>
                 <div className='left-side'>
@@ -37,10 +37,10 @@ function Login() {
                 <div className='right-side'>
                   <div className='h-full'>
                     <h1 className='text-black font-bold text-2xl mb-5'>Sign In</h1>
-                    <form className='flex flex-col gap-3' onSubmit={handleLogin}>
+                    <form className='flex flex-col gap-3 focus-within:outline-[#4F46E5]' onSubmit={handleLogin}>
                       <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Enter Email...'/>
                       <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder='Enter Password...'/>
-                      <button className='w-fit bg-red-400 text-sm font-extralight text-white rounded-sm px-4 py-2'>Login</button>
+                      <button className='w-fit bg-[#4F46E5] hover:bg-[#4338CA] text-sm font-extralight text-white rounded-sm px-4 py-2'>Login</button>
                       <p className='text-black text-sm font-light'>Don't have an account? <span className='text-blue-500'>
                         <Link href="/signup">
                         Create One
