@@ -1,18 +1,15 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-// import { useSession } from "next-auth/react";
 
 export function useNotifications() {
-//   const { status } = useSession();
+
   const [notifications, setNotifications] = useState([]);
-//   const [loading, setLoading] = useState(true);
 
   const fetchNotifications = useCallback(async () => {
     const response = await fetch("/api/notifications");
     const data = await response.json();
     if (data.success) setNotifications(data.data);
-    // setLoading(false);
   }, []);
 
 
@@ -32,8 +29,6 @@ export function useNotifications() {
 
 
   useEffect(() => {
-    // if (status !== "authenticated") return;
-
     fetch("/api/notifications", { method: "POST" }).then(fetchNotifications);
   }, [fetchNotifications]);
 

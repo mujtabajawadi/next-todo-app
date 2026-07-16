@@ -43,7 +43,7 @@ function Tasks({ limit, icon, title, filter }) {
           {title && icon && (
             <button
               onClick={() => setIsDialogOpen(true)}
-              className="p-1 rounded-lg bg-[#4F46E5] hover:bg-[#4338CA] text-[#EEF2FF]"
+              className="px-2 py-1 rounded-md bg-[#4F46E5] hover:bg-[#4338CA] text-[#EEF2FF]"
             >
               <span>+</span> Add Task
             </button>

@@ -32,7 +32,6 @@ function Header() {
     } else {
       params.delete("search");
     }
-    setSearchQuery("")
     router.push(`${pathname}?${params.toString()}`);
   };
 
@@ -48,7 +47,7 @@ function Header() {
           <input
             type="text"
             placeholder="Search your task here..."
-            defaultValue={searchParams.get("search") ?? ""}
+            // defaultValue={searchParams.get("search") ?? ""}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full rounded-lg focus:outline-none outline-none bg-[#FFFFFF] text-[#94A3B8]"
