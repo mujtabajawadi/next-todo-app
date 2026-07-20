@@ -4,10 +4,10 @@ function layout({children, details}) {
   return (
 
       <div className=' grid grid-cols-9 gap-2 grow max-h-full'>
-      <div className='bg-[#FFFFFF] shadow-lg rounded-lg col-span-4 overflow-y-scroll scrollbar-none'>
+      <div className='bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)] rounded-lg col-span-6 overflow-y-scroll scrollbar-none'>
         {children}
       </div>
-      <div className='bg-[#FFFFFF] shadow-lg rounded-lg col-span-5'>
+      <div className='bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)] rounded-lg col-span-3'>
         {details}
       </div>
     </div>

@@ -24,10 +24,10 @@ function page({ searchParams }) {
   console.log(today);
   return (
     <>
-      <h1 className="px-5 text-xl font-semibold">Welcome, {session?.user?.name.toLocaleUpperCase()}👋🏼</h1>
+      <h1 className="px-5 text-xl font-semibold text-white">Welcome, {session?.user?.name.toLocaleUpperCase()}👋🏼</h1>
       <div className="rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
-        <div className="py-3 grow  min-h-full  grid grid-cols-2 gap-3 rounded-md">
-          <div className=" bg-[#FFFFFF] border shadow-lg rounded-lg grid grid-rows-4">
+        <div className="py-3 grow  min-h-full  grid grid-cols-3 gap-3 rounded-md">
+          <div className=" bg-white/4 backdrop-blur-xl border-white/12 border rounded-lg grid grid-rows-4 text-white col-span-2  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
             <Tasks
               limit={2}
               icon={<CalendarClock />}
@@ -36,7 +36,7 @@ function page({ searchParams }) {
             />
           </div>
           <div className="rounded-lg grid grid-rows-5 gap-2 px-3">
-            <div className="shadow-md bg-[#FFFFFF] rounded-lg flex gap-2 py-2 border row-span-2 justify-center  ">
+            <div className="rounded-lg flex gap-2 py-2 border row-span-2 justify-center bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)] ">
               {/* Circular Progress */}
               <div className="relative size-30">
                 <svg
@@ -116,10 +116,10 @@ function page({ searchParams }) {
               </div>
               {/* End Circular Progress */}
             </div>
-            <div className="shadow-lg bg-[#FFFFFF] border rounded-lg grid grid-rows-2 row-span-3 gap-2 px-10 py-4 ">
+            <div className="border rounded-lg grid grid-rows-2 row-span-3 gap-2 px-10 py-4 bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
               {
                 completedTasks.length === 0 ? (
-                  <div className="p-5 text-center text-[#111827]">No tasks found</div>
+                  <div className="p-5 text-center">No completed tasks</div>
                 ): (
                   completedTasks.slice(0, 2).map((task) => (
                     <div

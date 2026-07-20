@@ -41,11 +41,11 @@ function Sidebar() {
 
   return (
     <div className="min-w-60 max-w-60 flex flex-col grow justify-end">
-      <div className="bg-[#16213E] text-white rounded-tr-lg rounded-br-lg flex flex-col items-center grow mt-8">
+      <div className="bg-white/4 backdrop-blur-xl  border-white/12 text-white rounded-tr-lg rounded-br-lg flex flex-col items-center grow mt-8  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
         <div className={`  flex flex-col items-center`}>
           <Link href="/profile">
             <div
-              className={`w-15 h-15 rounded-full -mt-5 flex justify-center items-center font-bold`}
+              className={`w-15 h-15 rounded-full -mt-5 flex justify-center items-center font-bold border border-white/20 shadow-[0_0_25px_5px_rgba(26,200,184,0.25)]`}
               style={{ backgroundColor: profileColor }}
             >
               {session?.user?.name
@@ -65,7 +65,7 @@ function Sidebar() {
             return (
               <ul
                 key={previous.id}
-                className={`${isActive ? "bg-[#4F46E5] text-[#FFFFFF] rounded-lg" : "hover:bg-[#4338CA] rounded-lg text-[#D1D5DB]"}`}
+                className={`${isActive ? "border border-[#1AC8B8]/60 bg-[#1AC8B8]/12 text-sm font-semibold text-white shadow-[0_0_15px_rgba(26,200,184,0.35),inset_0_1px_1px_rgba(255,255,255,0.2)] rounded-lg" : "hover:bg-white/4 hover:backdrop-blur-xl  hover:border-white/12 rounded-lg"}`}
               >
                 <Link href={previous.path}>
                   <li className="flex gap-2 items-center text-sm font-light p-2">
@@ -80,7 +80,7 @@ function Sidebar() {
           })}
 
           <div
-            className=" text-left mt-12 text-sm font-light rounded-lg hover:bg-[#DC2626] hover:text-[#FEE2E2] bg-[#FEE2E2] text-[#DC2626] p-1 cursor-pointer"
+            className=" text-left mt-12 text-sm font-light rounded-lg hover:bg-[#DC2626] text-[#D1D5DB] p-1 cursor-pointer"
             onClick={() => signOut({ callbackUrl: "/login" })}
           >
             <button className="flex gap-2 p-1 items-center">

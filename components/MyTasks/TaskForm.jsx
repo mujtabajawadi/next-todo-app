@@ -93,14 +93,14 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
   };
 
   return (
-    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} className="bg-[#ededed]">
+    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} className="text-white">
       {/* <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} /> */}
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent className="sm:max-w-sm bg-white/2 backdrop-blur-xl border border-white/12 text-white max-h-[85vh] ">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>{isEditing?"Edit Task": "Add New Task"}</DialogTitle>
           </DialogHeader>
-          <FieldGroup>
+          <FieldGroup className="text-white">
             <Field>
               <Label htmlFor="title-1">Title</Label>
               <Input
@@ -119,14 +119,14 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
                     <Button
                       variant={"outline"}
                       data-empty={!date}
-                      className="w-63 justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
+                      className="w-63 justify-between text-left font-normal data-[empty=true]:text-muted-foreground bg-white/4 backdrop-blur-xl border border-white"
                     >
                       {date ? format(date, "P") : <span>Pick a date</span>}
                       <ChevronDownIcon data-icon="inline-end" />
                     </Button>
                   }
                 />
-                <PopoverContent className="w-auto p-0" align="start" required>
+                <PopoverContent className="w-auto p-0 bg-white/20 backdrop-blur-xl border border-white" align="start" required>
                   <Calendar
                     mode="single"
                     required
@@ -169,15 +169,17 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
                 placeholder="Task description goes here..."
                 required
                 value={description}
+                className="h-32 scrollbar-none"
                 onChange={(e) => setDescription(e.target.value)}
               />
             </Field>
           </FieldGroup>
-          <DialogFooter>
+          <DialogFooter className="bg-transparent mt-4">
             <DialogClose
               render={
                 <Button
                   variant="outline"
+                  className="text-black"
                   onClick={() => setIsDialogOpen(false)}
                 >
                   Cancel

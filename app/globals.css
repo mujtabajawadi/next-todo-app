@@ -55,9 +55,7 @@
   }
 }
 input{
-  border: 1px solid #EEF2FF;
   border-radius: 5px;
-  color: #171717;
   padding: 0.3rem;
   font-size: smaller;
 }
@@ -65,7 +63,7 @@ button{
   cursor: pointer;
 }
 body{
-  background-color: #EEF2FF;
+  /* background-color: #EEF2FF; */
 }
 
 :root {

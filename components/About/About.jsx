@@ -13,41 +13,50 @@ import AboutImage from "@/public/images/about-image.png";
 
 function About() {
   return (
-    <div className="flex flex-col gap-3">
-      <div>
-        <h1 className="text-[#16213E] font-semibold text-2xl">
+    <div className="flex flex-col gap-2">
+      <div className="text-white">
+        <h1 className="font-semibold text-2xl">
           About TaskEasy
         </h1>
         <p>
           Learn more about the mission, features and technology behind TaskEasy
         </p>
       </div>
-      <div className="flex justify-between bg-[#FFFFFF] p-3 border border-gray-200 shadow-md  h-50 rounded-md">
-        <div className="w-[50%] flex flex-col p-3 gap-3 ">
+      <div className="relative flex justify-between h-50 bg-white/4 backdrop-blur-xl border border-white/12 rounded-[20px] px-6 py-2  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+        {/* Cyan Radial Glow Background (Positioned behind the image) */}
+        <div className="pointer-events-none absolute right-30 top-1/2 -translate-y-1/2 h-62.5 w-62.5 rounded-full bg-[radial-gradient(circle,rgba(26,200,184,0.75)_0%,rgba(26,200,184,0)_70%)] blur-2xl"></div>
+
+        {/* Left Content Area */}
+        <div className="relative z-10 w-[50%] flex flex-col p-3 gap-3">
           <div className="flex gap-2 items-center">
-            <span className="bg-[#4F46E5] rounded-full border p-1">
-              <Globe className="text-[#EEF2FF]" size={26} />
+            <span className="bg-[#1AC8B8]/15 rounded-full border border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)]">
+              <Globe className="text-[#1AC8B8]" size={26} />
             </span>
-            <h1>TaskEasy</h1>
+            <h1 className="text-2xl font-bold text-white">TaskEasy</h1>
           </div>
-          <p>
+
+          <p className="text-white text-sm leading-relaxed">
             A modern task management application designed to help you organize
             your work, stay productive and never miss important deadlines
           </p>
-          <p className="flex gap-2 text-[#4F46E5] p-1 rounded-md bg-[#EEF2FF] border w-fit items-center justify-center">
+
+          {/* Version Badge (Gold Theme) */}
+          <p className="flex gap-2 text-[#FBBF24] text-xs font-medium p-1.5 px-3 rounded-lg bg-[#FBBF24]/10 border border-[#FBBF24]/40 shadow-[0_0_10px_rgba(251,191,36,0.3)] w-fit items-center justify-center">
             <Sparkles size={16} />
             <span>Version 1.0</span>
           </p>
         </div>
-        <div className="w-[50%] flex items-center justify-center">
+
+        {/* Right Image Container */}
+        <div className="relative z-10 w-[50%] flex items-center justify-center">
           <Image src={AboutImage} height={150} alt="Hero-Image" />
         </div>
       </div>
       <div className="grid grid-cols-3 gap-3 overflow-hidden">
-        <div className="flex flex-col justify-between p-3 bg-[#FFFFFF] border border-gray-200 shadow-md rounded-md">
-          <div className="flex gap-2 items-center">
-            <span className="bg-[#EEF2FF] rounded-md border p-1">
-              <Crosshair className="text-[#4F46E5]" size={20} />
+        <div className="flex flex-col justify-between p-3 bg-white/4 backdrop-blur-xl  border-white/12 rounded-[20px] border text-white shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+          <div className="flex gap-2 items-center justify-center">
+            <span className="bg-[#1AC8B8]/15 rounded-md border border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)]">
+              <Crosshair className="text-[#1AC8B8]" size={20} />
             </span>
             <h1>Our Mission</h1>
           </div>
@@ -59,57 +68,57 @@ function About() {
             </p>
           </div>
         </div>
-        <div className="col-span-2 p-3 flex flex-col justify-between gap-2 bg-[#FFFFFF] border border-gray-200 shadow-md rounded-md">
-          <div className="flex gap-2 items-center">
-            <span className="bg-[#EEF2FF] rounded-md border p-1">
-              <Star className="text-[#4F46E5]" size={20} />
+        <div className="col-span-2 p-3 flex flex-col justify-between gap-2 bg-white/4 backdrop-blur-xl  border-white/12 rounded-[20px] border text-white shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+          <div className="flex gap-2 items-center justify-center">
+            <span className="bg-[#1AC8B8]/15 rounded-md border border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)]">
+              <Star className="text-[#1AC8B8]" size={20} />
             </span>
             <h1>Key Features</h1>
           </div>
           <div className="grid grid-cols-2 gap-2 text-xs">
             <p className="flex gap-1">
               <span>
-                <CircleCheck className="text-[#4F46E5]" size={18} />
+                <CircleCheck className="text-[#1AC8B8]" size={14} />
               </span>
               Create, edit and delete tasks
             </p>
             <p className="flex gap-1">
               <span>
-                <CircleCheck className="text-[#4F46E5]" size={18} />
+                <CircleCheck className="text-[#1AC8B8]" size={14} />
               </span>
               Priority levels and due dates
             </p>
             <p className="flex gap-1">
               <span>
-                <CircleCheck className="text-[#4F46E5]" size={18} />
+                <CircleCheck className="text-[#1AC8B8]" size={14} />
               </span>
               Daily deadline notifications
             </p>
             <p className="flex gap-1">
               <span>
-                <CircleCheck className="text-[#4F46E5]" size={18} />
+                <CircleCheck className="text-[#1AC8B8]" size={14} />
               </span>
               Track progress with analytics
             </p>
             <p className="flex gap-1">
               <span>
-                <CircleCheck className="text-[#4F46E5]" size={18} />
+                <CircleCheck className="text-[#1AC8B8]" size={14} />
               </span>
               Instant searching
             </p>
             <p className="flex gap-1">
               <span>
-                <CircleCheck className="text-[#4F46E5]" size={18} />
+                <CircleCheck className="text-[#1AC8B8]" size={14} />
               </span>
               Clean Interface
             </p>
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between bg-[#FFFFFF] p-3 border border-gray-200 shadow-md rounded-md">
+      <div className="flex items-center justify-between  bg-white/4 backdrop-blur-xl  border-white/12 rounded-[20px] border text-white p-3  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
         <div className="flex gap-2 items-center w-[40%]">
-          <span className="bg-[#EEF2FF] rounded-md border p-1">
-            <CodeXml className="text-[#4F46E5]" size={20} />
+          <span className="bg-[#1AC8B8]/15  border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)] rounded-md border">
+            <CodeXml className="text-[#1AC8B8]" size={20} />
           </span>
           <h1>Technology Stack</h1>
         </div>
@@ -118,7 +127,7 @@ function About() {
             <span>
               {" "}
               <Image
-                 src="https://thesvg.org/icons/react/wordmark-light.svg"
+                src="https://thesvg.org/icons/react/wordmark-dark.svg"
                 alt="React"
                 width={80}
                 height={80}
@@ -132,18 +141,18 @@ function About() {
                 height={20}
               />
               <span>
-              <Image
-      src="https://thesvg.org/icons/nextdotjs/wordmark-light.svg"
-      alt="Next.js"
-      width={80}
-      height={80}
-    />
+                <Image
+                  src="https://thesvg.org/icons/nextdotjs/wordmark-light.svg"
+                  alt="Next.js"
+                  width={80}
+                  height={80}
+                />
               </span>
             </span>
             <span>
               {" "}
               <Image
-                   src="https://thesvg.org/icons/mongodb/wordmark-dark.svg"
+                src="https://thesvg.org/icons/mongodb/wordmark-dark.svg"
                 alt="MongoDB"
                 width={100}
                 height={100}
@@ -152,7 +161,7 @@ function About() {
             <span>
               {" "}
               <Image
-                  src="https://thesvg.org/icons/tailwind-css/wordmark-light.svg"
+                src="https://thesvg.org/icons/tailwind-css/wordmark-dark.svg"
                 alt="Tailwind CSS"
                 width={120}
                 height={120}

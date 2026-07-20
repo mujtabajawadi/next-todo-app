@@ -2,6 +2,19 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { Header, Sidebar, Container } from "@/components/index.js";
 import Providers from "@/lib/provider.js";
+import localFont from "next/font/local"
+
+
+const urbanist = localFont({
+  src:[
+    {
+      path: "../../public/fonts/general-sans/GeneralSans-Regular.otf",
+      weight: "400",
+      style: "normal"
+    }
+  ],
+  variable: "--font-custom"
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,9 +35,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${urbanist.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col">
+      <body className={`min-h-screen flex flex-col ${urbanist.className} bg-linear-to-br from-[#081e21] to-[#0b2a2d]`}>
         <Providers>
           <Header />
           <div className="flex grow ">

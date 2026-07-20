@@ -37,13 +37,13 @@ function Tasks({ limit, icon, title, filter }) {
       <div className="p-3 max-h-fit">
         <div className="flex justify-between ">
           <h1 className="flex gap-2">
-            <span className="text-[#16213E]">{icon ?? ""}</span>
+            <span className="">{icon ?? ""}</span>
             <span className="font-semibold">{title ?? "My Tasks"}</span>
           </h1>
           {title && icon && (
             <button
               onClick={() => setIsDialogOpen(true)}
-              className="px-2 py-1 rounded-md bg-[#4F46E5] hover:bg-[#4338CA] text-[#EEF2FF]"
+              className="px-2 py-1 rounded-md bg-[#1AC8B8]/25 border border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)] hover:bg-[#1AC8B8]/70 text-white"
             >
               <span>+</span> Add Task
             </button>
@@ -57,15 +57,16 @@ function Tasks({ limit, icon, title, filter }) {
       </div>
 
       {filteredTasks.length === 0 ? (
-        <div className="p-5 text-center text-[#111827]">No tasks found.</div>
+        <div className="p-5 text-center ">No tasks found.</div>
       ) : (
         filteredTasks.map((task, index) => {
           if (index > tasksDisplay) return null;
 
           return (
             <Link href={`/my-tasks/${task._id}`} key={task._id}>
-              <div className={`py-2 px-3 mx-3 my-1 mb-2 shadow-[0_10px_30px_rgba(15,23,42,.06)] hover:shadow-[0_15p_x40px_rgba(79,70,229,.12)] rounded-md cursor-pointer text-sm hover:scale-103 transition-transform duration-500 border-2 border-[#E5E7EB] ${task.isCompleted ? "border-l-[#4F46E5]" : "border-l-[#EF4444]"}`}>
-                <h2 className="font-semibold text-lg text-[#111827]">{task.title}</h2>
+              <div className={`py-2 px-3 mx-3 my-2 mb-4 rounded-md cursor-pointer text-sm hover:scale-102 transition-all duration-500  bg-white/20 backdrop-blur-xl text-white shadow-[inset_2px_2px_30px_0_rgba(255,255,255,0.15)] border hover:border-[#1AC8B8]/20 p-2 hover:shadow-[0_0_8px_rgba(26,200,184,0.3)]`}>
+                <input type="checkbox" name="completed" id="" className="" />
+                <h2 className="font-semibold text-lg">{task.title}</h2>
                 <p>{task.description}</p>
                 <div className="flex justify-between gap-3 text-xs">
                   <p className="font-semibold">
