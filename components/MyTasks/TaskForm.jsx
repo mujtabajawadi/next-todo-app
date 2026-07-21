@@ -95,7 +95,7 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} className="text-white">
       {/* <DialogTrigger render={<Button variant="outline">Open Dialog</Button>} /> */}
-      <DialogContent className="sm:max-w-sm bg-white/2 backdrop-blur-xl border border-white/12 text-white max-h-[85vh] ">
+      <DialogContent className="sm:max-w-sm bg-white/2 backdrop-blur-xl border border-white/12 text-white max-h-[85vh] shadow-[0_0_10px_2px_rgba(251,187,36,0.5)] ">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>{isEditing?"Edit Task": "Add New Task"}</DialogTitle>
@@ -112,7 +112,7 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
               />
             </Field>
             <Field>
-              <Label htmlFor="deadline-1">Date</Label>
+              <Label htmlFor="deadline-1">Deadline</Label>
               <Popover>
                 <PopoverTrigger
                   render={

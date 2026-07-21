@@ -24,13 +24,13 @@ function page({ searchParams }) {
   console.log(today);
   return (
     <>
-      <h1 className="px-5 text-xl font-semibold text-white">Welcome, {session?.user?.name.toLocaleUpperCase()}👋🏼</h1>
+      <h1 className="text-xl font-semibold text-white">Welcome, {session?.user?.name.toLocaleUpperCase()}👋🏼</h1>
       <div className="rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
         <div className="py-3 grow  min-h-full  grid grid-cols-3 gap-3 rounded-md">
-          <div className=" bg-white/4 backdrop-blur-xl border-white/12 border rounded-lg grid grid-rows-4 text-white col-span-2  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+          <div className=" bg-white/4 backdrop-blur-xl border-white/12 border rounded-lg text-white col-span-2  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
             <Tasks
               limit={2}
-              icon={<CalendarClock />}
+              icon={<CalendarClock size={18} />}
               title="To-Do"
               filter={(item) => item.deadline.startsWith(today)}
             />

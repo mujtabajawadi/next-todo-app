@@ -34,9 +34,9 @@ function Tasks({ limit, icon, title, filter }) {
 
   return (
     <>
-      <div className="p-3 max-h-fit">
-        <div className="flex justify-between ">
-          <h1 className="flex gap-2">
+      <div className="p-3 max-h-fit col-span-2">
+        <div className="flex justify-between items-center ">
+          <h1 className="flex gap-2 items-center">
             <span className="">{icon ?? ""}</span>
             <span className="font-semibold">{title ?? "My Tasks"}</span>
           </h1>
@@ -64,30 +64,28 @@ function Tasks({ limit, icon, title, filter }) {
 
           return (
             <Link href={`/my-tasks/${task._id}`} key={task._id}>
-              <div className={`py-2 px-3 mx-3 my-2 mb-4 rounded-md cursor-pointer text-sm hover:scale-102 transition-all duration-500  bg-white/20 backdrop-blur-xl text-white shadow-[inset_2px_2px_30px_0_rgba(255,255,255,0.15)] border hover:border-[#1AC8B8]/20 p-2 hover:shadow-[0_0_8px_rgba(26,200,184,0.3)]`}>
-                <input type="checkbox" name="completed" id="" className="" />
-                <h2 className="font-semibold text-lg">{task.title}</h2>
-                <p>{task.description}</p>
-                <div className="flex justify-between gap-3 text-xs">
-                  <p className="font-semibold">
-                    Priority:{" "}
-                    <span className="font-extralight">{task.priority}</span>
-                  </p>
-                  <p className="font-semibold">
-                    Status:{" "}
-                    <span className="font-extralight">
-                      {task.isCompleted === false
-                        ? "Not Completed"
-                        : "Completed"}
-                    </span>
-                  </p>
-                  <p className="font-semibold">
-                    Created At:{" "}
-                    <span className="font-extralight">
-                      {" "}
-                      {new Date(task.createdAt).toLocaleDateString()}
-                    </span>
-                  </p>
+              <div
+                className={`py-2 px-3 mx-3 rounded-md cursor-pointer text-sm bg-white/10 backdrop-blur-xl text-white transition-all duration-400 transform-gpu will-change-transform hover:border-[#FBBF24]/80 hover:shadow-[inset_2px_2px_200px_0_rgba(255,255,255,0.10),0_0_10px_2px_rgba(251,187,36,0.5)]
+                `}
+              >
+                <div className="flex justify-between items-start gap-2">
+                  <div className="flex gap-3">
+                    <input
+                      type="checkbox"
+                      name="completed"
+                      id=""
+                      className=""
+                    />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-lg m-0 p-0">{task.title}</p>
+                    <p>{task.description.slice(0, 150)}...</p>
+                  </div>
+                  <div>
+                    <p className="text-[#FBBF24] w-fit h-fit text-xs p-1 rounded-md bg-[#FBBF24]/10 border border-[#FBBF24]/40 shadow-[0_0_10px_rgba(251,191,36,0.3)]">
+                      {task.priority.toUpperCase()}
+                    </p>
+                  </div>
                 </div>
               </div>
             </Link>

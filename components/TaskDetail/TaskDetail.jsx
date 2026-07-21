@@ -28,25 +28,46 @@ function TaskDetail({ userTask }) {
   };
 
   return (
-    <div className="p-3 max-h-full grow flex flex-col justify-between">
+    <div className="">
       <TaskForm
         isDialogOpen={isDialogOpen}
         setIsDialogOpen={setIsDialogOpen}
         task={userTask}
       />
-      <div className="p-3 max-h-full flex flex-col justify-between">
-        <h1 className="font-semibold">Task Title: <span className="font-extralight">{userTask.title}</span></h1>
-        <p className="font-semibold">Priority: <span className="font-extralight">{userTask.priority}</span></p>
-        <p className="font-semibold">Status: <span className="font-extralight">{userTask.isCompleted === false ? "Not Completed" : "Completed"}</span></p>
-        <p className="font-semibold">Created on : <span className="font-extralight">{new Date(userTask.createdAt).toLocaleDateString()}</span></p>
-        <p className="font-semibold">Task Description: <span className="font-extralight">{userTask.description}</span></p>
-        <p className="font-semibold">Deadline: <span className="font-extralight">{new Date(userTask.deadline).toLocaleDateString()}</span></p>
-        <div className="flex gap-3 justify-end">
-          <div className="bg-[#FEF3C7] text-[#D97706] rounded p-1 hover:scale-105 transition-transform duration-700 cursor-pointer">
-            <SquarePen onClick={handleEditTask} size={14}/>
+      <div className="p-3 max-h-full flex flex-col gap-5 justify-between">
+        <div className="flex justify-between items-center">
+        <h1 className="font-extrabold text-xl">{userTask.title}</h1>
+        <p className="text-[#FBBF24] w-fit h-fit text-xs p-1 rounded-md bg-[#FBBF24]/10 border border-[#FBBF24]/40 shadow-[0_0_10px_rgba(251,191,36,0.3)]">{userTask.priority.toUpperCase()}</p>
+        </div>
+        <div className="max-h-[35dvh] overflow-y-scroll scrollbar-none">
+        <p >{userTask.description}</p>
+        </div>
+        <div className="text-[#FBBF24] p-1 rounded-md bg-[#FBBF24]/20 border border-[#FBBF24]/40 shadow-[0_0_10px_rgba(251,191,36,0.3)] flex justify-between items-center">
+        <p >Deadline: </p>
+        <span className="">{new Date(userTask.deadline).toLocaleDateString()}</span>
+        </div>
+        <div className="flex flex-col gap-2 bg-white/10 backdrop-blur-xl shadow-[0_0_2px_rgba(0,0,0,0.5)] p-1 rounded-md">
+          <div className="flex justify-between items-center">
+          <p className="">Created At : </p>
+        <span className="font-extralight">{new Date(userTask.createdAt).toLocaleDateString()}</span>
           </div>
-          <div className="bg-[#FEE2E2] text-[#DC2626] rounded p-1 hover:scale-105 transition-transform duration-400 cursor-pointer">
-            <Trash2 onClick={() => handleDeleteTask(userTask._id)} size={14}/>
+        <div className="flex justify-between items-center">
+        <p className="">Status: </p>
+        <span className="font-extralight">{userTask.isCompleted === false ? "Not Completed" : "Completed"}</span>
+        </div>
+        </div>
+        
+        
+       
+        
+        <div className="flex gap-3">
+          <div className="cursor-pointer flex gap-2 justify-center p-1 rounded-md bg-[#414328]/60 border border-[#D1C373]/40 text-[#E8D985] shadow-[0_0_12px_rgba(209,195,115,0.2),inset_0_1px_1px_rgba(255,255,255,0.25)] items-center grow" onClick={handleEditTask}>
+            <SquarePen  size={14}/>
+            <p>Edit Task</p>
+          </div>
+          <div className=" rounded-md p-1 cursor-pointer flex gap-2 justify-center items-center bg-[#4A282D]/70 border border-[#E07A85]/30 text-[#EFA3AC] shadow-[0_0_12px_rgba(224,122,133,0.15),inset_0_1px_1px_rgba(255,255,255,0.25)] grow" onClick={() => handleDeleteTask(userTask._id)}>
+            <Trash2  size={14}/>
+              <p>Delete Task</p>
           </div>
         </div>
       </div>

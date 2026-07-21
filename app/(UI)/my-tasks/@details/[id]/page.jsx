@@ -11,7 +11,9 @@ async function page(props) {
   const taskObject = JSON.parse(JSON.stringify(userTask))
 
   return (
+    <div className="grow max-h-full">
     <TaskDetail userTask={taskObject}/>
+    </div>
   );
 }
 

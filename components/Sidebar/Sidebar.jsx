@@ -21,10 +21,10 @@ function Sidebar() {
   const { data: session } = useSession();
 
   const navItems = [
-    { id: 1, name: "Dashboard", icon: <LayoutDashboard />, path: "/dashboard" },
-    { id: 2, name: "Vital Tasks", icon: <Megaphone />, path: "/vital-tasks" },
-    { id: 3, name: "My Tasks", icon: <CalendarCheck />, path: "/my-tasks" },
-    { id: 4, name: "About", icon: <Info />, path: "/about" },
+    { id: 1, name: "Dashboard", icon: <LayoutDashboard size={16}/>, path: "/dashboard" },
+    { id: 2, name: "Vital Tasks", icon: <Megaphone size={16}/>, path: "/vital-tasks" },
+    { id: 3, name: "My Tasks", icon: <CalendarCheck size={16}/>, path: "/my-tasks" },
+    { id: 4, name: "About", icon: <Info size={16}/>, path: "/about" },
   ];
 
   console.log(session);
@@ -84,7 +84,7 @@ function Sidebar() {
             onClick={() => signOut({ callbackUrl: "/login" })}
           >
             <button className="flex gap-2 p-1 items-center">
-              <LogOut />
+              <LogOut size={16}/>
               Logout
             </button>
           </div>
