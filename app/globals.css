@@ -145,3 +145,11 @@ body{
     @apply font-sans;
   }
 }
+
+@theme{
+  --font-sans: var(--font-generalSans);
+  --font-urbanist: var(--font-urbanist);
+  --font-urbanist: var(--font-urbanist);
+  --font-karla: var(--font-karla)
+
+}

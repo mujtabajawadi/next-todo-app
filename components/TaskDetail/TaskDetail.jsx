@@ -39,8 +39,8 @@ function TaskDetail({ userTask }) {
         <h1 className="font-extrabold text-xl">{userTask.title}</h1>
         <p className="text-[#FBBF24] w-fit h-fit text-xs p-1 rounded-md bg-[#FBBF24]/10 border border-[#FBBF24]/40 shadow-[0_0_10px_rgba(251,191,36,0.3)]">{userTask.priority.toUpperCase()}</p>
         </div>
-        <div className="max-h-[35dvh] overflow-y-scroll scrollbar-none">
-        <p >{userTask.description}</p>
+        <div className="max-h-[35dvh] overflow-y-scroll scrollbar-none ">
+        <p className="font-karla text-xs">{userTask.description}</p>
         </div>
         <div className="text-[#FBBF24] p-1 rounded-md bg-[#FBBF24]/20 border border-[#FBBF24]/40 shadow-[0_0_10px_rgba(251,191,36,0.3)] flex justify-between items-center">
         <p >Deadline: </p>
