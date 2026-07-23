@@ -1,13 +1,15 @@
 "use client";
-import Link from "next/link";
+
 import React, { useState } from "react";
-import { TaskForm } from "@/components/index";
+import { TaskForm, TaskItem } from "@/components/index";
 import { useTasks } from "@/hooks/useTasks";
 import { useSearchParams } from "next/navigation";
 
-function Tasks({ limit, icon, title, filter }) {
+
+function Tasks({ limit, title, filter }) {
   const { tasks } = useTasks();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   const searchParams = useSearchParams();
   const currentSearchQuery = searchParams.get("search")?.toLowerCase() || "";
   console.log(currentSearchQuery);
@@ -37,13 +39,12 @@ function Tasks({ limit, icon, title, filter }) {
       <div className="p-3 max-h-fit col-span-2">
         <div className="flex justify-between items-center ">
           <h1 className="flex gap-2 items-center">
-            <span className="">{icon ?? ""}</span>
-            <span className="font-semibold">{title ?? "My Tasks"}</span>
+            <span className="font-MarkaziText text-3xl">{title ?? "My Tasks"}</span>
           </h1>
-          {title && icon && (
+          {title === "To-Do" && (
             <button
               onClick={() => setIsDialogOpen(true)}
-              className="px-2 py-1 rounded-md bg-[#1AC8B8]/25 border border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)] hover:bg-[#1AC8B8]/70 text-white"
+              className="py-1.5 px-2 rounded-md bg-[#1AC8B8]/25 border border-[#1AC8B8]/30 shadow-[0_0_12px_rgba(26,200,184,0.3)] hover:bg-[#1AC8B8]/70 text-white font-karla transition-all duration-500"
             >
               <span>+</span> Add Task
             </button>
@@ -53,7 +54,7 @@ function Tasks({ limit, icon, title, filter }) {
           isDialogOpen={isDialogOpen}
           setIsDialogOpen={setIsDialogOpen}
         />
-        <p>{today}&nbsp; &bull; Today </p>
+        <p className="text-[#1AC8B8]/85 font-poppins text-xs">{today}&nbsp; &bull; Today </p>
       </div>
 
       {filteredTasks.length === 0 ? (
@@ -61,34 +62,8 @@ function Tasks({ limit, icon, title, filter }) {
       ) : (
         filteredTasks.map((task, index) => {
           if (index > tasksDisplay) return null;
-
           return (
-            <Link href={`/my-tasks/${task._id}`} key={task._id}>
-              <div
-                className={`py-2 px-3 mx-3 rounded-md cursor-pointer text-sm bg-white/10 backdrop-blur-xl text-white transition-all duration-400 transform-gpu will-change-transform hover:border-[#FBBF24]/80 hover:shadow-[inset_2px_2px_200px_0_rgba(255,255,255,0.10),0_0_10px_2px_rgba(251,187,36,0.5)]
-                `}
-              >
-                <div className="flex justify-between items-start gap-2">
-                  <div className="flex gap-3">
-                    <input
-                      type="checkbox"
-                      name="completed"
-                      id=""
-                      className=""
-                    />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-lg m-0 p-0">{task.title}</p>
-                    <p>{task.description.slice(0, 150)}...</p>
-                  </div>
-                  <div>
-                    <p className="text-[#FBBF24] w-fit h-fit text-xs p-1 rounded-md bg-[#FBBF24]/10 border border-[#FBBF24]/40 shadow-[0_0_10px_rgba(251,191,36,0.3)]">
-                      {task.priority.toUpperCase()}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Link>
+            <TaskItem key={task._id} task={task}/>
           );
         })
       )}

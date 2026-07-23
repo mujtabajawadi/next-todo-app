@@ -24,15 +24,14 @@ function page({ searchParams }) {
   console.log(today);
   return (
     <>
-      <h1 className="text-xl font-semibold text-white">Welcome, {session?.user?.name.toLocaleUpperCase()}👋🏼</h1>
+      <h1 className="text-3xl font-MarkaziText text-white">Welcome, {session?.user?.name.toLocaleUpperCase()}</h1>
       <div className="rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
         <div className="py-3 grow  min-h-full  grid grid-cols-3 gap-3 rounded-md">
           <div className=" bg-white/4 backdrop-blur-xl border-white/12 border rounded-lg text-white col-span-2  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
             <Tasks
               limit={2}
-              icon={<CalendarClock size={18} />}
               title="To-Do"
-              filter={(item) => item.deadline.startsWith(today)}
+              filter={(item) => item.deadline.startsWith(today) && item.isCompleted === false}
             />
           </div>
           <div className="rounded-lg grid grid-rows-5 gap-2 px-3">
@@ -116,7 +115,7 @@ function page({ searchParams }) {
               </div>
               {/* End Circular Progress */}
             </div>
-            <div className="border rounded-lg grid grid-rows-2 row-span-3 gap-2 px-10 py-4 bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+            <div className="border rounded-lg grid grid-rows-2 row-span-3 gap-2 px-4 py-4 bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
               {
                 completedTasks.length === 0 ? (
                   <div className="p-5 text-center">No completed tasks</div>
@@ -127,7 +126,7 @@ function page({ searchParams }) {
                       key={task._id}
                     >
                       <h1 className="font-semibold">{task.title}</h1>
-                      <p>{task.description}</p>
+                      <p>{task.description.slice(0,30)}...</p>
                       <p className="font-semibold">
                         Status:{" "}
                         <span className="font-extralight">

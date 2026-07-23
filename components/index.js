@@ -9,6 +9,8 @@ import Tasks from "./MyTasks/Tasks.jsx";
 import TaskForm from "./MyTasks/TaskForm.jsx";
 import TaskDetail from "./TaskDetail/TaskDetail.jsx";
 import About from "./About/About.jsx";
+import TaskItem from "./MyTasks/TaskItem.jsx";
+
 
 
 
@@ -26,5 +28,6 @@ export {
     Tasks,
     TaskForm,
     TaskDetail,
+    TaskItem,
     About,
 }

@@ -38,18 +38,20 @@ function Header() {
   return (
     <>
       <header className="grid grid-cols-6 px-5 py-1 justify-between items-center text-white  bg-white/4 backdrop-blur-xl z-99999 relative">
+
         <div>
-          <h1 className="text-2xl font-bold font-sans text-[#1AC8B8]">
+          <h1 className="text-3xl font-MarkaziText text-[#1AC8B8]">
             <span className="">Task</span><span className="">Easy</span>
           </h1>
         </div>
-        <div className="flex col-span-4 rounded-lg focus-within:outline focus-within:outline-[#1AC8B8]  bg-white/20 backdrop-blur-xl overflow-hidden">
+        
+        <div className="flex col-span-4 focus-within:outline focus-within:outline-[#1AC8B8]  bg-white/20 backdrop-blur-xl rounded-lg overflow-hidden">
           <input
             type="text"
             placeholder="Search your task here..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full p-1.5 rounded-lg outline-none focus:outline-0 stroke-0 text-white"
+            className="w-full p-1.5  outline-none focus:outline-0 stroke-0 text-white"
           />
           <span className="px-3 py-1 border-l-2 border-l-[#1AC8B8]/40 cursor-pointer bg-white/4 backdrop-blur-xl flex items-center " onClick={handleSearch}>
             <Search className="text-[#EEF2FF]/50" strokeWidth={3} size={18}/>
@@ -57,8 +59,8 @@ function Header() {
         </div>
         
         <div className="col-start-6 flex justify-between items-center">
-        <div className="flex justify-end relative ml-5">
-          <span className={`p-1 rounded-lg relative backdrop-blur-xl border border-white/12 shadow-[inset_2px_2px_20px_0_rgba(255,255,255,0.20)] cursor-pointer ${unreadCount > 0 ? "bg-[#FBBF24]/70 text-[#FBBF24]": "bg-white/4"}`} onClick={()=> setIsNotificationVisible(!isNotificationVisible)}>
+        <div className="flex justify-end relative ml-10">
+          <span className={`p-2 items-center justify-center rounded-lg relative backdrop-blur-xl border border-white/12 shadow-[inset_2px_2px_20px_0_rgba(255,255,255,0.20)] cursor-pointer ${unreadCount > 0 ? "bg-[#FBBF24]/70 text-[#FBBF24]": "bg-white/4"}`} onClick={()=> setIsNotificationVisible(!isNotificationVisible)}>
             <Bell className="text-[#EEF2FF]/50" strokeWidth={2} size={18}  />
             <div className={`${unreadCount > 0 ? "block" : "hidden"} w-2 h-2 rounded-full bg-[#EF4444] absolute -right-0.5 -top-0.5`}></div>
           </span>
@@ -75,13 +77,13 @@ function Header() {
                 </div>
                 </Link>
               )) : (
-                <div className="flex justify-center mt-5 text-[#E5E7EB]">No New Notifications</div>
+                <div className="flex justify-center mt-5 text-[#E5E7EB] font-karla">No New Notifications</div>
 
               )
             }
           </div>
         </div>
-        <div>
+        <div className="font-karla text-xs text-center">
           <span>
             {dateInformation.weekDay || "Loading..."}
           </span>

@@ -70,7 +70,6 @@ export async function GET(req) {
 export async function PATCH(req) {
   const id = req.nextUrl.searchParams.get("id");
   const updatedFields = await req.json();
-  console.log(id);
   try {
     await connectDatabase();
     const updatedTask = await Task.findByIdAndUpdate(
@@ -89,6 +88,11 @@ export async function PATCH(req) {
         { status: 404 },
       );
     }
+
+    if(updatedFields.isCompleted === true){
+      await Notification.deleteMany({taskId: id})
+    }
+
     return NextResponse.json({ message: "Task Updated" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 });

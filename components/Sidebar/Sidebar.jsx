@@ -56,8 +56,8 @@ function Sidebar() {
                 .toUpperCase()}
             </div>
           </Link>
-          <h2 className="text-[#D1D5DB]">{session?.user?.name}</h2>
-          <p className="text-[#D1D5DB]">{session?.user?.email}</p>
+          <h2 className="font-MarkaziText text-2xl">{session?.user?.name}</h2>
+          <p className="text-[#1AC8B8]/85  font-poppins text-xs">{session?.user?.email}</p>
         </div>
         <nav className="w-[85%] h-full flex flex-col gap-6 px-2 py-4">
           {navItems.map((previous) => {
@@ -68,7 +68,7 @@ function Sidebar() {
                 className={`${isActive ? "border border-[#1AC8B8]/60 bg-[#1AC8B8]/12 text-sm font-semibold text-white shadow-[0_0_15px_rgba(26,200,184,0.35),inset_0_1px_1px_rgba(255,255,255,0.2)] rounded-lg" : "hover:bg-white/4 hover:backdrop-blur-xl  hover:border-white/12 rounded-lg"}`}
               >
                 <Link href={previous.path}>
-                  <li className="flex gap-2 items-center text-sm font-light p-2">
+                  <li className="flex gap-2 items-center text-sm font-light font-karla p-2">
                     <span className="font-extralight text-xs">
                       {previous.icon}
                     </span>
@@ -80,10 +80,10 @@ function Sidebar() {
           })}
 
           <div
-            className=" text-left mt-12 text-sm font-light rounded-lg hover:bg-[#DC2626] text-[#D1D5DB] p-1 cursor-pointer"
+            className=" text-left mt-12 text-sm font-light rounded-lg hover:bg-[#DC2626] p-1 cursor-pointer transition-all duration-400"
             onClick={() => signOut({ callbackUrl: "/login" })}
           >
-            <button className="flex gap-2 p-1 items-center">
+            <button className="flex gap-2 p-1 items-center font-karla">
               <LogOut size={16}/>
               Logout
             </button>

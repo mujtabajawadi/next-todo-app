@@ -54,10 +54,7 @@
     --foreground: #EEF2FF;
   }
 }
-input{
-  border-radius: 5px;
-  font-size: smaller;
-}
+
 button{
   cursor: pointer;
 }
@@ -150,6 +147,7 @@ body{
   --font-sans: var(--font-generalSans);
   --font-urbanist: var(--font-urbanist);
   --font-urbanist: var(--font-urbanist);
-  --font-karla: var(--font-karla)
-
+  --font-karla: var(--font-karla);
+  --font-poppins: var(--font-poppins);
+  --font-MarkaziText: var(--font-MarkaziText)
 }

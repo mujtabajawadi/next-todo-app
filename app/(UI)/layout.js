@@ -44,6 +44,41 @@ const Karla = localFont({
   ],
   variable: "--font-karla"
 })
+const Poppins = localFont({
+  src:[
+    {
+      path: "../../public/fonts/poppins/Poppins-Regular.ttf",
+      weight: "400",
+      style: "normal"
+    },
+  ],
+  variable: "--font-poppins"
+})
+const MarkaziText = localFont({
+  src:[
+    {
+      path: "../../public/fonts/MarkaziText/MarkaziText-Regular.ttf",
+      weight: "400",
+      style: "normal"
+    },
+    {
+      path: "../../public/fonts/MarkaziText/MarkaziText-Medium.ttf",
+      weight: "500",
+      style: "normal"
+    },
+    {
+      path: "../../public/fonts/MarkaziText/MarkaziText-SemiBold.ttf",
+      weight: "600",
+      style: "semibold"
+    },
+    {
+      path: "../../public/fonts/MarkaziText/MarkaziText-Bold.ttf",
+      weight: "800",
+      style: "bold"
+    },
+  ],
+  variable: "--font-MarkaziText"
+})
 
 
 
@@ -56,9 +91,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${GeneralSans.variable} ${Urbanist.variable} ${Karla.variable} h-full antialiased`}
+      className={`${GeneralSans.variable} ${Urbanist.variable} ${Karla.variable} ${Poppins.variable} ${MarkaziText.variable} h-full antialiased`}
     >
-      <body className={`min-h-screen flex flex-col ${GeneralSans.className} ${Urbanist.className} ${Karla.className} bg-linear-to-br from-[#081e21] to-[#0b2a2d]`}>
+      <body className={`min-h-screen flex flex-col bg-linear-to-br from-[#081e21] to-[#0b2a2d]`}>
         <Providers>
           <Header />
           <div className="flex grow ">

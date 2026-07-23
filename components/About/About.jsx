@@ -15,14 +15,14 @@ function About() {
   return (
     <div className="flex flex-col gap-2">
       <div className="text-white">
-        <h1 className="font-semibold text-2xl">
+        <h1 className="font-MarkaziText text-3xl">
           About TaskEasy
         </h1>
-        <p>
+        <p className="font-karla">
           Learn more about the mission, features and technology behind TaskEasy
         </p>
       </div>
-      <div className="relative flex justify-between h-50 bg-white/4 backdrop-blur-xl border border-white/12 rounded-[20px] px-6 py-2  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+      <div className="relative flex justify-between bg-white/4 backdrop-blur-xl border border-white/12 rounded-[20px] py-2  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
         {/* Cyan Radial Glow Background (Positioned behind the image) */}
         <div className="pointer-events-none absolute right-30 top-1/2 -translate-y-1/2 h-62.5 w-62.5 rounded-full bg-[radial-gradient(circle,rgba(26,200,184,0.75)_0%,rgba(26,200,184,0)_70%)] blur-2xl"></div>
 
@@ -32,16 +32,16 @@ function About() {
             <span className="bg-[#1AC8B8]/15 rounded-full border border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)]">
               <Globe className="text-[#1AC8B8]" size={26} />
             </span>
-            <h1 className="text-2xl font-bold text-white">TaskEasy</h1>
+            <h1 className="text-2xl font-MarkaziText text-white">TaskEasy</h1>
           </div>
 
-          <p className="text-white text-sm leading-relaxed">
+          <p className="text-white text-sm leading-relaxed font-karla">
             A modern task management application designed to help you organize
             your work, stay productive and never miss important deadlines
           </p>
 
           {/* Version Badge (Gold Theme) */}
-          <p className="flex gap-2 text-[#FBBF24] text-xs font-medium p-1.5 px-3 rounded-lg bg-[#FBBF24]/10 border border-[#FBBF24]/40 shadow-[0_0_10px_rgba(251,191,36,0.3)] w-fit items-center justify-center">
+          <p className="flex gap-2 text-[#FBBF24] text-xs font-karla p-2 rounded-lg bg-[#FBBF24]/10 border border-[#FBBF24]/40 shadow-[0_0_10px_rgba(251,191,36,0.3)] w-fit items-center justify-center">
             <Sparkles size={16} />
             <span>Version 1.0</span>
           </p>
@@ -53,29 +53,30 @@ function About() {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-3 overflow-hidden">
-        <div className="flex flex-col justify-between p-3 bg-white/4 backdrop-blur-xl  border-white/12 rounded-[20px] border text-white shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
-          <div className="flex gap-2 items-center justify-center">
+        <div className="flex flex-col justify-between p-3 gap-3 bg-white/4 backdrop-blur-xl  border-white/12 rounded-[20px] border text-white shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+          <div className="flex gap-2 items-center text-2xl font-MarkaziText">
             <span className="bg-[#1AC8B8]/15 rounded-md border border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)]">
               <Crosshair className="text-[#1AC8B8]" size={20} />
             </span>
             <h1>Our Mission</h1>
           </div>
           <div>
-            <p className="text-xs leading-loose text-justify">
-              We believe task management should be simple, fast and
+            <p className="text-xs font-karla leading-loose text-justify">
+              Task management should be simple, fast and
               distraction-free. TaskEasy helps individuals focus on what truly
               matters - getting things done.
             </p>
           </div>
         </div>
+        
         <div className="col-span-2 p-3 flex flex-col justify-between gap-2 bg-white/4 backdrop-blur-xl  border-white/12 rounded-[20px] border text-white shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
-          <div className="flex gap-2 items-center justify-center">
+          <div className="flex gap-2 items-center text-2xl font-MarkaziText">
             <span className="bg-[#1AC8B8]/15 rounded-md border border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)]">
               <Star className="text-[#1AC8B8]" size={20} />
             </span>
             <h1>Key Features</h1>
           </div>
-          <div className="grid grid-cols-2 gap-2 text-xs">
+          <div className="grid grid-cols-2 gap-2 text-xs font-karla">
             <p className="flex gap-1">
               <span>
                 <CircleCheck className="text-[#1AC8B8]" size={14} />
@@ -116,7 +117,7 @@ function About() {
         </div>
       </div>
       <div className="flex items-center justify-between  bg-white/4 backdrop-blur-xl  border-white/12 rounded-[20px] border text-white p-3  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
-        <div className="flex gap-2 items-center w-[40%]">
+        <div className="flex gap-2 items-center w-[40%] text-2xl font-MarkaziText">
           <span className="bg-[#1AC8B8]/15  border-[#1AC8B8]/30 p-2 shadow-[0_0_12px_rgba(26,200,184,0.3)] rounded-md border">
             <CodeXml className="text-[#1AC8B8]" size={20} />
           </span>
