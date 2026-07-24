@@ -51,7 +51,7 @@ function Header() {
             placeholder="Search your task here..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full p-1.5  outline-none focus:outline-0 stroke-0 text-white"
+            className="w-full p-2 font-karla  outline-none focus:outline-0 stroke-0 text-white"
           />
           <span className="px-3 py-1 border-l-2 border-l-[#1AC8B8]/40 cursor-pointer bg-white/4 backdrop-blur-xl flex items-center " onClick={handleSearch}>
             <Search className="text-[#EEF2FF]/50" strokeWidth={3} size={18}/>

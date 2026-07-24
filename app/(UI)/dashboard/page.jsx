@@ -4,6 +4,7 @@ import React, { use } from "react";
 import { CalendarClock } from "lucide-react";
 import { useTasks } from "@/hooks/useTasks";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 
 function page({ searchParams }) {
@@ -35,7 +36,7 @@ function page({ searchParams }) {
             />
           </div>
           <div className="rounded-lg grid grid-rows-5 gap-2 px-3">
-            <div className="rounded-lg flex gap-2 py-2 border row-span-2 justify-center bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)] ">
+            <div className="rounded-lg flex gap-2 py-2 border font-karla text-xs row-span-2 justify-center bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)] ">
               {/* Circular Progress */}
               <div className="relative size-30">
                 <svg
@@ -88,7 +89,7 @@ function page({ searchParams }) {
                     cy="18"
                     r="16"
                     fill="none"
-                    className="stroke-current text-[#E5E7EB]"
+                    className="stroke-current text-[#E5E7EB] "
                     strokeWidth="2"
                   ></circle>
                   {/* Progress Circle */}
@@ -115,25 +116,22 @@ function page({ searchParams }) {
               </div>
               {/* End Circular Progress */}
             </div>
-            <div className="border rounded-lg grid grid-rows-2 row-span-3 gap-2 px-4 py-4 bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+            <div className="border rounded-lg grid grid-rows-2 row-span-3 gap-4 p-4 bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
               {
                 completedTasks.length === 0 ? (
-                  <div className="p-5 text-center">No completed tasks</div>
+                  <div className="p-5 text-center font-karla text-xs">No completed tasks</div>
                 ): (
                   completedTasks.slice(0, 2).map((task) => (
-                    <div
-                      className="shadow-md rounded-lg hover:scale-102 transition-transform duration-500 px-3 py-2  border-2 border-[rgba(0,0,0,0.1)]"
-                      key={task._id}
-                    >
-                      <h1 className="font-semibold">{task.title}</h1>
-                      <p>{task.description.slice(0,30)}...</p>
-                      <p className="font-semibold">
+                    <Link href={`/my-tasks/${task._id}`}  className="rounded-lg bg-white/10 transition-all duration-400 px-3 py-2 hover:border-[#FBBF24]/80  hover:shadow-[inset_2px_2px_200px_0_rgba(255,255,255,0.10),0_0_10px_2px_rgba(251,187,36,0.5)]"
+                    key={task._id}>
+                      <h1 className="font-MarkaziText text-2xl">{task.title}</h1>
+                      <p className="font-karla text-xs">
                         Status:{" "}
-                        <span className="font-extralight">
+                        <span className="font-karla">
                           {task.isCompleted ? "Completed" : "Not Completed"}
                         </span>
                       </p>
-                    </div>
+                    </Link>
                   ))
                 )
               }

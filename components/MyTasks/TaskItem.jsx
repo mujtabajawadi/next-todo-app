@@ -34,12 +34,12 @@ function TaskItem({ task }) {
     <>
       <Link href={`/my-tasks/${task._id}`} key={task._id}>
         <div
-          className={`py-2 px-3 m-3 rounded-md cursor-pointer text-sm bg-white/10 backdrop-blur-xl text-white transition-all duration-400 transform-gpu will-change-transform hover:border-[#FBBF24]/80 hover:shadow-[inset_2px_2px_200px_0_rgba(255,255,255,0.10),0_0_10px_2px_rgba(251,187,36,0.5)]
+          className={`py-2 px-3 m-3 rounded-md cursor-pointer text-sm bg-white/10 backdrop-blur-xl text-white transition-all duration-400 hover:border-[#FBBF24]/80 hover:shadow-[inset_2px_2px_200px_0_rgba(255,255,255,0.10),0_0_10px_2px_rgba(251,187,36,0.5)]
                 `}
         >
           <div className="grid grid-cols-12">
             <div
-              className="flex col-span-1 items-start"
+              className="flex col-span-1 items-center"
               onClick={(e) => {
                 e.preventDefault()
                 e.stopPropagation()}}
@@ -47,7 +47,7 @@ function TaskItem({ task }) {
               <Checkbox
                 checked={checked}
                 onCheckedChange={(isChecked) => handleCheckboxToggle(isChecked)}
-                className="border-[#1AC8B8]/70 border-2 rounded-full
+                className="border-[#1AC8B8]/70 border rounded-full
                     data-checked:bg-[#1AC8B8]/70
                     data-checked:border-none"
               />
