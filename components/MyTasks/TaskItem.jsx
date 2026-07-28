@@ -1,11 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useRouter } from "next/navigation";
+
 
 function TaskItem({ task }) {
   const [checked, setChecked] = useState(task.isCompleted || false);
+  const router = useRouter()
 
+
+  useEffect(() => {
+    setChecked(task.isCompleted || false);
+  }, [task.isCompleted]);
 
   const handleCheckboxToggle = async (isChecked)=>{
     setChecked(isChecked);
@@ -23,6 +30,8 @@ function TaskItem({ task }) {
       if (!res.ok) {
         throw new Error("Failed to update task");
       }
+
+      router.refresh()
     } catch (error) {
       console.error("Error updating task status:", error);
       setChecked(!isChecked);

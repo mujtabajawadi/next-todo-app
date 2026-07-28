@@ -58,9 +58,7 @@
 button{
   cursor: pointer;
 }
-body{
-  /* background-color: #EEF2FF; */
-}
+
 
 :root {
   --background: oklch(1 0 0);

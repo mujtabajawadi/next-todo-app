@@ -79,14 +79,23 @@ function TaskForm({ isDialogOpen, setIsDialogOpen, task }) {
       });
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.error || "Failed to add new task.");
+        throw new Error(data.error || "Failed to add/edit task.");
       }
+
+      if(priority === "extreme"){
+        await fetch("/api/notifications", {method: "POST"})
+      }
+
       setTitle("");
       setDescription("");
       setPriority("low");
       setDate("");
       setIsDialogOpen(false);
-      router.push("/my-tasks")
+
+      router.refresh();
+      if(!isEditing){
+        router.push("/my-tasks")
+      }
     } catch (error) {
       console.error("Task addition Error: ", error);
     }

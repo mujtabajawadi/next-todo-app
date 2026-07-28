@@ -5,10 +5,12 @@ import { CalendarClock } from "lucide-react";
 import { useTasks } from "@/hooks/useTasks";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 
 function page({ searchParams }) {
   const { tasks } = useTasks();
+  const router = useRouter()
   const resolvedParams = use(searchParams);
   const currentSearch = resolvedParams.search || "";
   const { data: session ,  } = useSession();
@@ -19,6 +21,7 @@ function page({ searchParams }) {
 
   const notCompletedPercentage =
   tasks.length > 0 ? 100 - completionPercentage : 0;
+
 
   const date = new Date();
   const today = date.toISOString().split("T")[0];

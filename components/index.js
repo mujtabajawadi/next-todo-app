@@ -10,6 +10,8 @@ import TaskForm from "./MyTasks/TaskForm.jsx";
 import TaskDetail from "./TaskDetail/TaskDetail.jsx";
 import About from "./About/About.jsx";
 import TaskItem from "./MyTasks/TaskItem.jsx";
+import Providers from "./ImagekitProvider.jsx";
+import FileUpload from "./FileUpload.jsx";
 
 
 
@@ -30,4 +32,6 @@ export {
     TaskDetail,
     TaskItem,
     About,
+    Providers,
+    FileUpload
 }

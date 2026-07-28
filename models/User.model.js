@@ -18,6 +18,14 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    fileURL: {
+        type: String,
+        default: ""
+    },
+    fileId: {
+        type: String,
+        default: ""
     }
 },
 {

@@ -89,9 +89,10 @@ export async function PATCH(req) {
       );
     }
 
-    if(updatedFields.isCompleted === true){
-      await Notification.deleteMany({taskId: id})
-    }
+    // if(updatedFields.isCompleted === true){
+    //   await Notification.deleteMany({taskId: id})
+    // }
+    //These lines were creating issue of re-generation of notifications marked as read while toggling task completion status.
 
     return NextResponse.json({ message: "Task Updated" }, { status: 200 });
   } catch (error) {

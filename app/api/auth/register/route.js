@@ -6,8 +6,9 @@ import User from "@/models/User.model.js";
 export async function POST (NextRequest){
 
     try{
-        const {fullName, userName, email, password} = await NextRequest.json()
-
+        const {fullName, userName, email, password, fileURL, fileId} = await NextRequest.json()
+        
+        console.log("Received payload:", { fullName, userName, email, fileURL, fileId });
         if(!fullName || !userName || !email ||!password){
             return NextResponse.json(
                 {error: "All fields are required."},
@@ -29,7 +30,9 @@ export async function POST (NextRequest){
             fullName,
             userName,
             email,
-            password
+            password,
+            fileURL,
+            fileId
         })
 
         return NextResponse.json(

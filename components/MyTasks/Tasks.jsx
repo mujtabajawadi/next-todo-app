@@ -58,7 +58,7 @@ function Tasks({ limit, title, filter }) {
       </div>
 
       {filteredTasks.length === 0 ? (
-        <div className="p-5 text-center ">No tasks found.</div>
+        <div className="p-5 text-center font-karla text-xs ">No tasks found.</div>
       ) : (
         filteredTasks.map((task, index) => {
           if (index > tasksDisplay) return null;

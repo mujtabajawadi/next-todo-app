@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import image from "@/public/images/todoImage.png";
 import { signOut } from "next-auth/react";
 import {
   LayoutDashboard,
@@ -16,7 +15,6 @@ import { useSession } from "next-auth/react";
 
 function Sidebar() {
   const pathname = usePathname();
-  const [profileColor, setProfileColor] = useState("");
 
   const { data: session } = useSession();
 
@@ -27,17 +25,8 @@ function Sidebar() {
     { id: 4, name: "About", icon: <Info size={16}/>, path: "/about" },
   ];
 
-  console.log(session);
 
-  let colorCode = "#";
-  useEffect(() => {
-    const hexString = "0123456789ABCDEF";
-    for (let i = 0; i < 6; i++) {
-      let randomNumber = Math.floor(Math.random() * 16);
-      colorCode += hexString[randomNumber];
-    }
-    setProfileColor(colorCode);
-  }, []);
+
 
   return (
     <div className="min-w-60 max-w-60 flex flex-col grow justify-end">
@@ -45,15 +34,10 @@ function Sidebar() {
         <div className={`  flex flex-col items-center`}>
           <Link href="/profile">
             <div
-              className={`w-15 h-15 rounded-full -mt-5 flex justify-center items-center font-bold border border-white/20 shadow-[0_0_25px_5px_rgba(26,200,184,0.25)]`}
-              style={{ backgroundColor: profileColor }}
+              className={`w-15 h-15 rounded-full -mt-5 flex justify-center items-center bg-center bg-cover shadow-[0_0_25px_5px_rgba(26,200,184,0.25)]`}
+              style={{backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}${session?.user?.image})`}}
             >
-              {session?.user?.name
-                .split(" ")
-                .map((name) => name[0])
-                .join("")
-                .slice(0, 2)
-                .toUpperCase()}
+              {/* <Image src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}${session?.user?.image}`} alt="Profile-Image" width={100} height={100}/> */}
             </div>
           </Link>
           <h2 className="font-MarkaziText text-2xl">{session?.user?.name}</h2>

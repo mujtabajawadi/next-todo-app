@@ -1,11 +1,11 @@
 import React from 'react'
-import { Signup } from '@/components/index'
+import { Providers, Signup } from '@/components/index'
 
 function page() {
   return (
-    <div>
+    <Providers>
       <Signup/>
-    </div>
+    </Providers>
   )
 }
 
