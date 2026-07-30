@@ -1,7 +1,11 @@
 import "@/app/globals.css";
-import { Header, Sidebar, Container } from "@/components/index.js";
+// import { Header, Sidebar, Container } from "@/components/index.js";
+import Header from '@/components/Header/Header.jsx'
+import Sidebar from "@/components/Sidebar/Sidebar.jsx"
+import Container from "@/components/Container/Container.jsx"
 import Providers from "@/lib/provider.js";
 import localFont from "next/font/local"
+import MenuContextProvider from "@/context/MenuContextProvider.jsx";
 
 
 const GeneralSans = localFont({
@@ -94,6 +98,8 @@ export default function RootLayout({ children }) {
       className={`${GeneralSans.variable} ${Urbanist.variable} ${Karla.variable} ${Poppins.variable} ${MarkaziText.variable} h-full antialiased`}
     >
       <body className={`min-h-screen flex flex-col bg-linear-to-br from-[#081e21] to-[#0b2a2d]`}>
+        <MenuContextProvider>
+
         <Providers>
           <Header />
           <div className="flex grow ">
@@ -101,6 +107,7 @@ export default function RootLayout({ children }) {
             <Container children={children}></Container>
           </div>
         </Providers>
+        </MenuContextProvider>
       </body>
     </html>
   );

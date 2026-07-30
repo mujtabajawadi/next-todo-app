@@ -12,8 +12,7 @@ function Tasks({ limit, title, filter }) {
   
   const searchParams = useSearchParams();
   const currentSearchQuery = searchParams.get("search")?.toLowerCase() || "";
-  console.log(currentSearchQuery);
-
+  
   const tasksDisplay = limit ?? tasks.length;
   const filteredTasks = tasks.filter((task) => {
     if (filter && !filter(task)) return false;

@@ -30,16 +30,16 @@ function page({ searchParams }) {
     <>
       <h1 className="text-3xl font-MarkaziText text-white">Welcome, {session?.user?.name.toLocaleUpperCase()}</h1>
       <div className="rounded-md max-h-full grow overflow-y-scroll scrollbar-none">
-        <div className="py-3 grow  min-h-full  grid grid-cols-3 gap-3 rounded-md">
-          <div className=" bg-white/4 backdrop-blur-xl border-white/12 border rounded-lg text-white col-span-2  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+        <div className=" py-3 grow  min-h-full flex flex-col md:grid md:grid-cols-3 gap-3 rounded-md">
+          <div className="order-2 md:order-1 bg-white/4 backdrop-blur-xl border-white/12 border rounded-lg text-white col-span-2  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
             <Tasks
               limit={2}
               title="To-Do"
               filter={(item) => item.deadline.startsWith(today) && item.isCompleted === false}
             />
           </div>
-          <div className="rounded-lg grid grid-rows-5 gap-2 px-3">
-            <div className="rounded-lg flex gap-2 py-2 border font-karla text-xs row-span-2 justify-center bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)] ">
+          <div className=" order-1 md:order-2 rounded-lg grid grid-rows-5 gap-2 md:px-3">
+            <div className="rounded-lg flex gap-2 py-15 md:py-2 border font-karla text-xs row-span-2 justify-center bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)] ">
               {/* Circular Progress */}
               <div className="relative size-30">
                 <svg

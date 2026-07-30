@@ -1,12 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Search, Bell } from "lucide-react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useNotifications } from "@/hooks/useNotifications";
 import Link from "next/link";
+import {Menu, X} from "lucide-react";
+import { MenuContext } from "@/context/menuContext";
 
 
 function Header() {
+  const context = useContext(MenuContext);
+  // const {isMenuOpen, toggleSidebar} = useContext(MenuContext)
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -15,6 +19,9 @@ function Header() {
   const [dateInformation, setDateInformation] = useState({weekDay: "", fullDate: ""})
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') ?? '');
 
+  const handleMenuClick = (e) => {
+    context.toggleSidebar();
+  };
 
   useEffect(()=>{
     setDateInformation({
@@ -37,15 +44,25 @@ function Header() {
 
   return (
     <>
-      <header className="grid grid-cols-6 px-5 py-1 justify-between items-center text-white  bg-white/4 backdrop-blur-xl z-99999 relative">
-
-        <div>
+      <header className="grid grid-cols-12 md:px-5 px-3 py-1 justify-between items-center text-white  bg-white/4 backdrop-blur-xl z-99999 relative">
+        <div className="col-span-3 flex items-center gap-3">
+        <button
+          type="button"
+          onClick={handleMenuClick}
+          className="py-2 px-1 text-white hover:text-[#1AC8B8] cursor-pointer transition-colors focus:outline-none md:hidden"
+          aria-label="Toggle Sidebar Menu"
+        >
+          {
+           context.isMenuOpen ? <X size={20}/> : <Menu size={20} />
+          }
+          
+        </button>
           <h1 className="text-3xl font-MarkaziText text-[#1AC8B8]">
             <span className="">Task</span><span className="">Easy</span>
           </h1>
         </div>
         
-        <div className="flex col-span-4 focus-within:outline focus-within:outline-[#1AC8B8]  bg-white/20 backdrop-blur-xl rounded-lg overflow-hidden">
+        <div className="flex col-span-6 focus-within:outline focus-within:outline-[#1AC8B8]  bg-white/20 backdrop-blur-xl rounded-lg overflow-hidden">
           <input
             type="text"
             placeholder="Search your task here..."
@@ -58,7 +75,7 @@ function Header() {
           </span>
         </div>
         
-        <div className="col-start-6 flex justify-between items-center">
+        <div className="col-span-3 flex md:justify-between justify-end md:items-center">
         <div className="flex justify-end relative ml-10">
           <span className={`p-2 items-center justify-center rounded-lg relative backdrop-blur-xl border border-white/12 shadow-[inset_2px_2px_20px_0_rgba(255,255,255,0.20)] cursor-pointer ${unreadCount > 0 ? "bg-[#FBBF24]/70 text-[#FBBF24]": "bg-white/4"}`} onClick={()=> setIsNotificationVisible(!isNotificationVisible)}>
             <Bell className="text-[#EEF2FF]/50" strokeWidth={2} size={18}  />
@@ -83,7 +100,7 @@ function Header() {
             }
           </div>
         </div>
-        <div className="font-karla text-xs text-center">
+        <div className="font-karla text-xs text-center hidden md:block">
           <span>
             {dateInformation.weekDay || "Loading..."}
           </span>

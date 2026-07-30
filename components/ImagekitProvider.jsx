@@ -1,4 +1,5 @@
 'use client';
+import MenuContextProvider from '@/context/MenuContextProvider';
 import { ImageKitProvider } from '@imagekit/next';
 
 const authenticator = async () => {

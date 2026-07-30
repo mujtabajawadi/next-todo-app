@@ -1,6 +1,5 @@
 "use client";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { signOut } from "next-auth/react";
 import {
   LayoutDashboard,
@@ -12,8 +11,10 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { MenuContext } from "@/context/menuContext";
 
 function Sidebar() {
+  const {isMenuOpen, toggleSidebar} = useContext(MenuContext)
   const pathname = usePathname();
 
   const { data: session } = useSession();
@@ -26,16 +27,21 @@ function Sidebar() {
   ];
 
 
-
+  const handleItemClick = () => {
+    if (toggleSidebar) {
+      toggleSidebar();
+    }
+  };
 
   return (
-    <div className="min-w-60 max-w-60 flex flex-col grow justify-end">
+    <div className={`flex-col grow justify-end min-w-60 max-w-60 md:static fixed left-0  h-full flex transition-transform duration-300 ease-in-out z-99999 md:h-auto md:min-h-full ${isMenuOpen ? " translate-x-0   " : "-translate-x-full md:translate-x-0"}`}>
       <div className="bg-white/4 backdrop-blur-xl  border-white/12 text-white rounded-tr-lg rounded-br-lg flex flex-col items-center grow mt-8  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
-        <div className={`  flex flex-col items-center`}>
+        <div className={`flex flex-col items-center`}>
           <Link href="/profile">
             <div
               className={`w-15 h-15 rounded-full -mt-5 flex justify-center items-center bg-center bg-cover shadow-[0_0_25px_5px_rgba(26,200,184,0.25)]`}
               style={{backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}${session?.user?.image})`}}
+              onClick={handleItemClick}
             >
               {/* <Image src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}${session?.user?.image}`} alt="Profile-Image" width={100} height={100}/> */}
             </div>
@@ -51,7 +57,7 @@ function Sidebar() {
                 key={previous.id}
                 className={`${isActive ? "border border-[#1AC8B8]/60 bg-[#1AC8B8]/12 text-sm font-semibold text-white shadow-[0_0_15px_rgba(26,200,184,0.35),inset_0_1px_1px_rgba(255,255,255,0.2)] rounded-lg" : "hover:bg-white/4 hover:backdrop-blur-xl  hover:border-white/12 rounded-lg"}`}
               >
-                <Link href={previous.path}>
+                <Link href={previous.path}  onClick={handleItemClick}>
                   <li className="flex gap-2 items-center text-sm font-light font-karla p-2">
                     <span className="font-extralight text-xs">
                       {previous.icon}
