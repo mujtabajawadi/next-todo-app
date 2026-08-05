@@ -133,7 +133,7 @@ function About() {
         alt="React"
         width={80}
         height={80}
-        className="w-12 sm:w-[80px] h-auto max-w-none"
+        className="w-12 sm:w-20 h-auto max-w-none"
       />
     </span>
 
@@ -144,14 +144,14 @@ function About() {
         alt="Next.js Icon"
         width={20}
         height={20}
-        className="w-4 sm:w-[20px] h-auto max-w-none"
+        className="w-4 sm:w-5 h-auto max-w-none"
       />
       <Image
         src="https://thesvg.org/icons/nextdotjs/wordmark-light.svg"
         alt="Next.js Text"
         width={80}
         height={80}
-        className="w-12 sm:w-[80px] h-auto max-w-none"
+        className="w-12 sm:w-20 h-auto max-w-none"
       />
     </span>
 
@@ -162,7 +162,7 @@ function About() {
         alt="MongoDB"
         width={100}
         height={100}
-        className="w-16 sm:w-[100px] h-auto max-w-none"
+        className="w-16 sm:w-25 h-auto max-w-none"
       />
     </span>
 
@@ -173,7 +173,7 @@ function About() {
         alt="Tailwind CSS"
         width={120}
         height={120}
-        className="w-20 sm:w-[120px] h-auto max-w-none"
+        className="w-20 sm:w-30 h-auto max-w-none"
       />
     </span>
 
@@ -184,7 +184,7 @@ function About() {
         alt="Auth.js"
         width={24}
         height={24}
-        className="w-5 sm:w-[24px] h-auto max-w-none"
+        className="w-5 sm:w-6 h-auto max-w-none"
       />
     </span>
 

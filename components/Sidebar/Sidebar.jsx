@@ -43,7 +43,6 @@ function Sidebar() {
               style={{backgroundImage: `url(${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}${session?.user?.image})`}}
               onClick={handleItemClick}
             >
-              {/* <Image src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}${session?.user?.image}`} alt="Profile-Image" width={100} height={100}/> */}
             </div>
           </Link>
           <h2 className="font-MarkaziText text-2xl">{session?.user?.name}</h2>

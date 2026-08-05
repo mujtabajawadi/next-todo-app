@@ -38,7 +38,7 @@ function page({ searchParams }) {
               filter={(item) => item.deadline.startsWith(today) && item.isCompleted === false}
             />
           </div>
-          <div className=" order-1 md:order-2 rounded-lg grid grid-rows-5 gap-2 md:px-3">
+          <div className=" order-1 md:order-2 rounded-lg grid grid-rows-1 md:grid-rows-5 gap-2 md:px-3">
             <div className="rounded-lg flex gap-2 py-15 md:py-2 border font-karla text-xs row-span-2 justify-center bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)] ">
               {/* Circular Progress */}
               <div className="relative size-30">
@@ -119,7 +119,7 @@ function page({ searchParams }) {
               </div>
               {/* End Circular Progress */}
             </div>
-            <div className="border rounded-lg grid grid-rows-2 row-span-3 gap-4 p-4 bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
+            <div className="hidden border rounded-lg md:grid grid-rows-2 row-span-3 gap-4 p-4 bg-white/4 backdrop-blur-xl border-white/12 text-white  shadow-[inset_2px_2px_50px_0_rgba(255,255,255,0.20)]">
               {
                 completedTasks.length === 0 ? (
                   <div className="p-5 text-center font-karla text-xs">No completed tasks</div>

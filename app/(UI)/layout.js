@@ -97,7 +97,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${GeneralSans.variable} ${Urbanist.variable} ${Karla.variable} ${Poppins.variable} ${MarkaziText.variable} h-full antialiased`}
     >
-      <body className={`min-h-screen flex flex-col bg-linear-to-br from-[#081e21] to-[#0b2a2d]`}>
+      <body className={`min-h-dvh flex flex-col bg-linear-to-br from-[#081e21] to-[#0b2a2d]`}>
         <MenuContextProvider>
 
         <Providers>
