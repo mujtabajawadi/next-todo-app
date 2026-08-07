@@ -46,7 +46,7 @@ function Sidebar() {
             </div>
           </Link>
           <h2 className="font-MarkaziText text-2xl">{session?.user?.name}</h2>
-          <p className="text-[#1AC8B8]/85  font-poppins text-xs">{session?.user?.email}</p>
+          <p className="text-[#1AC8B8]/85 font-poppins text-xs">{session?.user?.email}</p>
         </div>
         <nav className="w-[85%] h-full flex flex-col gap-6 px-2 py-4">
           {navItems.map((previous) => {

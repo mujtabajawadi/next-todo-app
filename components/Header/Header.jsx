@@ -49,7 +49,7 @@ function Header() {
   return (
     <>
       <header className="grid grid-cols-12 md:px-5 px-3 py-1 justify-between items-center text-white  bg-white/4 backdrop-blur-xl z-99999 relative">
-        <div className="col-span-3 flex items-center gap-3">
+        <div className="col-span-9 md:col-span-3 flex items-center gap-3">
           <button
             type="button"
             onClick={handleMenuClick}
@@ -82,7 +82,12 @@ function Header() {
         
 
         <div className="col-span-3 flex md:justify-between justify-end md:items-center">
-          <div className="flex justify-end relative ml-10">
+          <div className="flex justify-end items-center relative ml-10">
+          <span className="px-3 py-1 cursor-pointer flex justify-end md:hidden">
+            <span className="p-2 items-center justify-center rounded-lg relative backdrop-blur-xl border border-white/12 shadow-[inset_2px_2px_20px_0_rgba(255,255,255,0.20)] cursor-pointer">
+            <Search className="text-[#EEF2FF]/50" strokeWidth={2} size={18} onClick={()=> setMobileSearch(!mobileSearch)} />
+            </span>
+          </span>
             <span
               className={`p-2 items-center justify-center rounded-lg relative backdrop-blur-xl border border-white/12 shadow-[inset_2px_2px_20px_0_rgba(255,255,255,0.20)] cursor-pointer ${unreadCount > 0 ? "bg-[#FBBF24]/70 text-[#FBBF24]" : "bg-white/4"}`}
               onClick={() => setIsNotificationVisible(!isNotificationVisible)}
@@ -122,12 +127,7 @@ function Header() {
                 </div>
               )}
             </div>
-            <span
-            className="px-3 py-1 cursor-pointer flex justify-end md:hidden"
-            
-          >
-            <Search className="text-[#EEF2FF]/50" strokeWidth={3} size={18} onClick={()=> setMobileSearch(!mobileSearch)} />
-          </span>
+           
           </div>
           <div className="font-karla text-xs text-center hidden md:block">
             <span>{dateInformation.weekDay || "Loading..."}</span>
